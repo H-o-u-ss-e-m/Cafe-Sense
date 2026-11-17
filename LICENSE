@@ -1,0 +1,21 @@
+CaféSense - Licence propriétaire / Proprietary License
+
+Copyright (c) 2026 H-o-u-ss-e-m. Tous droits réservés. All rights reserved.
+
+Ce logiciel (code source, modèles entraînés, logo, charte graphique et documentation)
+est la propriété exclusive de son auteur et est fourni uniquement pour consultation et
+évaluation académique.
+
+Sans autorisation écrite préalable de l'auteur, il est INTERDIT de :
+  1. copier, reproduire ou redistribuer tout ou partie du logiciel ;
+  2. modifier, adapter ou créer des œuvres dérivées ;
+  3. utiliser le logiciel, les modèles ou le logo à des fins commerciales ;
+  4. publier ou sous-licencier le logiciel ou ses composants.
+
+Le logiciel est fourni "TEL QUEL", sans garantie d'aucune sorte. L'auteur ne saurait être
+tenu responsable des dommages résultant de son utilisation.
+
+Composants tiers : ils restent soumis à leurs licences respectives (Ultralytics YOLOv8 :
+AGPL-3.0 ; Qwen2.5 : Apache-2.0 ; Flask : BSD-3-Clause ; Angular et Bootstrap : MIT ;
+OpenCV : Apache-2.0). Rien dans la présente licence ne restreint les droits que ces
+licences accordent sur ces composants.

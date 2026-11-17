@@ -16,7 +16,7 @@
   <img src="https://img.shields.io/badge/YOLO-v8n%20Object%20Detection-00FFFF?style=for-the-badge&logo=ultralytics&logoColor=black" alt="YOLOv8"/>
   <img src="https://img.shields.io/badge/LLM-Qwen2.5--1.5B%20LoRA-6A0DAD?style=for-the-badge&logo=huggingface&logoColor=white" alt="Qwen2.5"/>
   <img src="https://img.shields.io/badge/ONNX%20Runtime-Edge%20Ready-005CED?style=for-the-badge&logo=onnx&logoColor=white" alt="ONNX"/>
-  <img src="https://img.shields.io/badge/Licence-Académique-success?style=for-the-badge" alt="Licence"/>
+  <img src="https://img.shields.io/badge/Licence-Propriétaire%20(Tous%20droits%20réservés)-B35E1B?style=for-the-badge" alt="Licence"/>
 </p>
 
 ---
@@ -63,7 +63,7 @@ Le projet **Smart Café** est une solution complète combinant l'**Internet des 
    * **Connexion directe avec la vision IoT** : l'agent informe instantanément les clients du nombre de tables libres réelles en interrogeant l'état en direct des caméras.
 
 > 🔒 **Contrainte Académique & Éthique Majeure :**  
-> **100% Open-Source et Indépendant.** Le projet ne fait appel à **aucune API commerciale externe payante** (aucun appel à OpenAI GPT-4, Anthropic Claude ou Google Gemini). Tous les modèles ont été entraînés, adaptés via *Fine-Tuning* et s'exécutent en local.
+> **100 % local et indépendant.** Le projet ne fait appel à **aucune API commerciale externe payante** (aucun appel à OpenAI GPT-4, Anthropic Claude ou Google Gemini). Tous les modèles ont été entraînés, adaptés via *Fine-Tuning* et s'exécutent en local.
 
 ---
 
@@ -378,6 +378,15 @@ Ce script d'orchestration démarre simultanément :
 | **Taille du Fichier Modèle**| 6,2 Mo (`best.pt`) / 12,1 Mo (`onnx`) | 73,9 Mo (`adapter_model.safetensors`) |
 | **Précision / Exactitude** | **98,9 % mAP50** sur les tables du café | **100 % factuel** (garanti par le moteur RAG) |
 | **Composant Matériel Clé** | CPU classique ou GPU léger (RTX / T4) | 4 à 8 Go de RAM système |
+
+---
+
+## 📜 Licence
+
+**CaféSense** est un logiciel **propriétaire — Copyright © 2026 H-o-u-ss-e-m. Tous droits réservés.**
+Le code source, les modèles entraînés (adaptateur LoRA, poids YOLO affinés), le logo, la charte graphique et la documentation sont fournis uniquement à des fins d'évaluation académique. Toute copie, modification, redistribution ou utilisation commerciale sans autorisation écrite de l'auteur est interdite. Voir le fichier [LICENSE](LICENSE).
+
+Les composants tiers conservent leurs propres licences : Ultralytics YOLOv8 (AGPL-3.0), Qwen2.5 (Apache-2.0), Flask (BSD-3-Clause), Angular (MIT), Bootstrap (MIT), OpenCV (Apache-2.0).
 
 ---
 
