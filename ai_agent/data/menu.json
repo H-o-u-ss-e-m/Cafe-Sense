@@ -1,0 +1,3016 @@
+{
+  "_readme": "Données DE DÉMONSTRATION d'un café-restaurant fictif (Tunis). Les prix sont en dinars tunisiens (TND). Le modèle IA ne mémorise PAS ce fichier : il est lu par les outils Python à chaque question.",
+  "cafe": {
+    "id": "cafe_demo",
+    "name": "Coffee House Lac",
+    "tagline": "Café, cuisine et douceurs au cœur des Berges du Lac",
+    "currency": "TND",
+    "currency_label": "DT",
+    "address": "12 Rue du Lac Léman, Les Berges du Lac 1, 1053 Tunis",
+    "city": "Tunis",
+    "phone": "+216 71 000 000",
+    "whatsapp": "+216 20 000 000",
+    "email": "contact@coffeehouse-lac.example",
+    "hours_groups": [
+      {
+        "days_fr": "du lundi au vendredi",
+        "days_en": "Monday to Friday",
+        "days": [
+          "lundi",
+          "mardi",
+          "mercredi",
+          "jeudi",
+          "vendredi"
+        ],
+        "open": "07:00",
+        "close": "23:00"
+      },
+      {
+        "days_fr": "le samedi et le dimanche",
+        "days_en": "Saturday and Sunday",
+        "days": [
+          "samedi",
+          "dimanche"
+        ],
+        "open": "08:00",
+        "close": "00:00"
+      }
+    ],
+    "wifi": {
+      "available": true,
+      "free": true,
+      "note": "Wi-Fi gratuit, le code est donné à la caisse."
+    },
+    "payment_methods": [
+      "espèces",
+      "carte bancaire",
+      "titres restaurant"
+    ],
+    "delivery": {
+      "available": true,
+      "fee": 3.0,
+      "min_order": 15.0,
+      "hours": "11h00 à 22h00",
+      "zones": [
+        "Berges du Lac 1",
+        "Berges du Lac 2",
+        "La Marsa",
+        "Les Jardins du Lac"
+      ],
+      "duration_min": "30 à 45 minutes"
+    },
+    "reservation": {
+      "available": true,
+      "how": "Par téléphone ou WhatsApp au +216 20 000 000.",
+      "note": "Réservation conseillée pour les groupes de 6 personnes et plus."
+    },
+    "services": {
+      "terrace": true,
+      "air_conditioning": true,
+      "parking": "Parking gratuit devant le café (20 places)",
+      "kids_chairs": true,
+      "halal": "Toute notre cuisine est halal",
+      "smoking_area": "Espace fumeurs sur la terrasse uniquement",
+      "accessibility": "Accès de plain-pied, accessible aux personnes à mobilité réduite",
+      "takeaway": true
+    },
+    "languages": [
+      "français",
+      "arabe",
+      "anglais"
+    ]
+  },
+  "categories": [
+    {
+      "id": "cafe",
+      "name": "Cafés",
+      "aliases": [
+        "café",
+        "cafés",
+        "cafe",
+        "coffee",
+        "coffees",
+        "kahwa",
+        "قهوة",
+        "boissons au café"
+      ]
+    },
+    {
+      "id": "the",
+      "name": "Thés et infusions",
+      "aliases": [
+        "thé",
+        "thés",
+        "the",
+        "tea",
+        "infusion",
+        "infusions",
+        "tisane",
+        "tisanes",
+        "atay",
+        "شاي"
+      ]
+    },
+    {
+      "id": "jus",
+      "name": "Jus et smoothies",
+      "aliases": [
+        "jus",
+        "jus de fruits",
+        "smoothie",
+        "smoothies",
+        "juice",
+        "juices",
+        "عصير",
+        "3assir",
+        "cocktail"
+      ]
+    },
+    {
+      "id": "boisson_froide",
+      "name": "Boissons fraîches",
+      "aliases": [
+        "boissons fraîches",
+        "boissons froides",
+        "boisson froide",
+        "soft",
+        "sodas",
+        "cold drinks",
+        "مشروبات باردة",
+        "limonade"
+      ]
+    },
+    {
+      "id": "petit_dejeuner",
+      "name": "Petit-déjeuner",
+      "aliases": [
+        "petit-déjeuner",
+        "petit dej",
+        "petit déjeuner",
+        "breakfast",
+        "فطور",
+        "ftour",
+        "brunch"
+      ]
+    },
+    {
+      "id": "viennoiserie",
+      "name": "Viennoiseries",
+      "aliases": [
+        "viennoiseries",
+        "viennoiserie",
+        "pâtisseries du matin",
+        "pastries",
+        "croissants"
+      ]
+    },
+    {
+      "id": "sandwich",
+      "name": "Sandwichs",
+      "aliases": [
+        "sandwich",
+        "sandwichs",
+        "sandwiches",
+        "casse-croûte",
+        "ساندويتش",
+        "sandwitch",
+        "sandwichs et paninis"
+      ]
+    },
+    {
+      "id": "salade",
+      "name": "Salades",
+      "aliases": [
+        "salade",
+        "salades",
+        "salad",
+        "salads",
+        "سلطة",
+        "slata"
+      ]
+    },
+    {
+      "id": "pizza",
+      "name": "Pizzas",
+      "aliases": [
+        "pizza",
+        "pizzas",
+        "بيتزا"
+      ]
+    },
+    {
+      "id": "pates",
+      "name": "Pâtes",
+      "aliases": [
+        "pâtes",
+        "pates",
+        "pasta",
+        "pasta dishes",
+        "معكرونة",
+        "makarouna",
+        "makrouna"
+      ]
+    },
+    {
+      "id": "plat",
+      "name": "Plats",
+      "aliases": [
+        "plat",
+        "plats",
+        "plats chauds",
+        "plat principal",
+        "main course",
+        "main dishes",
+        "burgers",
+        "أطباق",
+        "repas"
+      ]
+    },
+    {
+      "id": "dessert",
+      "name": "Desserts",
+      "aliases": [
+        "dessert",
+        "desserts",
+        "douceurs",
+        "gâteaux",
+        "gateaux",
+        "sweets",
+        "cakes",
+        "حلويات",
+        "7lou",
+        "sucreries",
+        "pâtisseries",
+        "patisseries"
+      ]
+    },
+    {
+      "id": "formule",
+      "name": "Formules",
+      "aliases": [
+        "formule",
+        "formules",
+        "menu",
+        "menus",
+        "combo",
+        "combos",
+        "deals",
+        "صيغ",
+        "formule menu"
+      ]
+    }
+  ],
+  "groups": {
+    "boisson": [
+      "cafe",
+      "the",
+      "jus",
+      "boisson_froide"
+    ],
+    "boisson_chaude": [
+      "cafe",
+      "the"
+    ],
+    "manger": [
+      "petit_dejeuner",
+      "viennoiserie",
+      "sandwich",
+      "salade",
+      "pizza",
+      "pates",
+      "plat",
+      "dessert"
+    ],
+    "salé": [
+      "sandwich",
+      "salade",
+      "pizza",
+      "pates",
+      "plat"
+    ]
+  },
+  "allergen_labels": {
+    "gluten": "gluten",
+    "lait": "lait",
+    "oeufs": "œufs",
+    "fruits_a_coque": "fruits à coque",
+    "arachides": "arachides",
+    "poisson": "poisson",
+    "soja": "soja",
+    "sesame": "sésame",
+    "moutarde": "moutarde",
+    "celeri": "céleri"
+  },
+  "tag_labels": {
+    "vegetarien": "végétarien",
+    "vegan": "vegan",
+    "sans_gluten": "sans gluten",
+    "sans_lactose": "sans lactose",
+    "epice": "épicé",
+    "chaud": "chaud",
+    "froid": "froid",
+    "sucre": "sucré",
+    "sans_sucre": "sans sucre ajouté",
+    "sans_cafeine": "sans caféine",
+    "contient_cafeine": "contient de la caféine",
+    "copieux": "copieux",
+    "leger": "léger",
+    "enfant": "adapté aux enfants",
+    "petit_dejeuner": "petit-déjeuner",
+    "signature": "spécialité de la maison"
+  },
+  "items": [
+    {
+      "id": 1,
+      "name": "Café Express",
+      "category": "cafe",
+      "price": 2.5,
+      "description": "Un espresso corsé préparé avec 100% arabica.",
+      "ingredients": [
+        "café arabica"
+      ],
+      "allergens": [],
+      "tags": [
+        "chaud",
+        "contient_cafeine",
+        "sans_gluten",
+        "sans_lactose",
+        "signature",
+        "vegan",
+        "vegetarien"
+      ],
+      "calories": 5,
+      "prep_time_min": 2,
+      "available": true,
+      "popular": true,
+      "gender": "m",
+      "aliases": [
+        "express",
+        "expresso",
+        "espresso",
+        "café noir",
+        "petit café",
+        "kahwa",
+        "9ahwa",
+        "قهوة",
+        "كافي"
+      ],
+      "image": "images/cafe_express.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Capucin",
+      "category": "cafe",
+      "price": 2.8,
+      "description": "Un espresso avec une goutte de lait mousseux, très populaire en Tunisie.",
+      "ingredients": [
+        "café arabica",
+        "lait mousseux"
+      ],
+      "allergens": [
+        "lait"
+      ],
+      "tags": [
+        "chaud",
+        "contient_cafeine",
+        "sans_gluten",
+        "signature",
+        "vegetarien"
+      ],
+      "calories": 20,
+      "prep_time_min": 3,
+      "available": true,
+      "popular": true,
+      "gender": "m",
+      "aliases": [
+        "capucine",
+        "cappucin",
+        "kapucin",
+        "capucin tunisien",
+        "كابوسان"
+      ],
+      "image": "images/capucin.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Café Direct",
+      "category": "cafe",
+      "price": 3.0,
+      "description": "Espresso allongé de lait chaud, servi en verre.",
+      "ingredients": [
+        "café arabica",
+        "lait chaud"
+      ],
+      "allergens": [
+        "lait"
+      ],
+      "tags": [
+        "chaud",
+        "contient_cafeine",
+        "sans_gluten",
+        "signature",
+        "vegetarien"
+      ],
+      "calories": 45,
+      "prep_time_min": 3,
+      "available": true,
+      "popular": true,
+      "gender": "m",
+      "aliases": [
+        "direct",
+        "kahwa direct",
+        "café au lait",
+        "direct tunisien",
+        "ديراكت"
+      ],
+      "image": "images/cafe_direct.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Café Allongé",
+      "category": "cafe",
+      "price": 2.8,
+      "description": "Un espresso allongé d'eau chaude pour un café plus léger.",
+      "ingredients": [
+        "café arabica",
+        "eau chaude"
+      ],
+      "allergens": [],
+      "tags": [
+        "chaud",
+        "contient_cafeine",
+        "leger",
+        "sans_gluten",
+        "sans_lactose",
+        "vegan",
+        "vegetarien"
+      ],
+      "calories": 5,
+      "prep_time_min": 2,
+      "available": true,
+      "popular": false,
+      "gender": "m",
+      "aliases": [
+        "allongé",
+        "americano",
+        "café long",
+        "long",
+        "cafe allonge"
+      ],
+      "image": "images/cafe_allonge.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Café Arabe",
+      "category": "cafe",
+      "price": 3.0,
+      "description": "Café moulu fin parfumé à l'eau de fleur d'oranger, préparé à la tunisienne.",
+      "ingredients": [
+        "café moulu",
+        "eau de fleur d'oranger",
+        "sucre"
+      ],
+      "allergens": [],
+      "tags": [
+        "chaud",
+        "contient_cafeine",
+        "sans_gluten",
+        "sans_lactose",
+        "sucre",
+        "vegan",
+        "vegetarien"
+      ],
+      "calories": 25,
+      "prep_time_min": 5,
+      "available": true,
+      "popular": false,
+      "gender": "m",
+      "aliases": [
+        "kahwa arbi",
+        "qahwa arabiya",
+        "café turc",
+        "turc",
+        "café oriental",
+        "قهوة عربي",
+        "9ahwa 3arbi"
+      ],
+      "image": "images/cafe_arabe.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Cappuccino",
+      "category": "cafe",
+      "price": 4.5,
+      "description": "Espresso, lait chaud et mousse de lait onctueuse, saupoudré de cacao.",
+      "ingredients": [
+        "café arabica",
+        "lait",
+        "mousse de lait",
+        "cacao"
+      ],
+      "allergens": [
+        "lait"
+      ],
+      "tags": [
+        "chaud",
+        "contient_cafeine",
+        "sans_gluten",
+        "signature",
+        "vegetarien"
+      ],
+      "calories": 120,
+      "prep_time_min": 4,
+      "available": true,
+      "popular": true,
+      "gender": "m",
+      "aliases": [
+        "cappuccino",
+        "capuccino",
+        "cappucino",
+        "cappuchino",
+        "كابتشينو",
+        "capp"
+      ],
+      "image": "images/cappuccino.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Latte",
+      "category": "cafe",
+      "price": 5.0,
+      "description": "Un double espresso avec beaucoup de lait chaud et une fine mousse.",
+      "ingredients": [
+        "double espresso",
+        "lait chaud"
+      ],
+      "allergens": [
+        "lait"
+      ],
+      "tags": [
+        "chaud",
+        "contient_cafeine",
+        "sans_gluten",
+        "vegetarien"
+      ],
+      "calories": 150,
+      "prep_time_min": 4,
+      "available": true,
+      "popular": false,
+      "gender": "m",
+      "aliases": [
+        "café latte",
+        "caffe latte",
+        "latté",
+        "لاتيه"
+      ],
+      "image": "images/latte.jpg"
+    },
+    {
+      "id": 8,
+      "name": "Mocha",
+      "category": "cafe",
+      "price": 5.5,
+      "description": "Espresso, chocolat noir, lait chaud et chantilly.",
+      "ingredients": [
+        "espresso",
+        "chocolat noir",
+        "lait",
+        "chantilly"
+      ],
+      "allergens": [
+        "lait"
+      ],
+      "tags": [
+        "chaud",
+        "contient_cafeine",
+        "sans_gluten",
+        "sucre",
+        "vegetarien"
+      ],
+      "calories": 230,
+      "prep_time_min": 5,
+      "available": true,
+      "popular": false,
+      "gender": "m",
+      "aliases": [
+        "moka",
+        "mokaccino",
+        "mocca",
+        "موكا"
+      ],
+      "image": "images/mocha.jpg"
+    },
+    {
+      "id": 9,
+      "name": "Chocolat Chaud",
+      "category": "cafe",
+      "price": 4.5,
+      "description": "Chocolat noir fondu dans du lait chaud, avec une touche de chantilly.",
+      "ingredients": [
+        "chocolat noir",
+        "lait",
+        "chantilly"
+      ],
+      "allergens": [
+        "lait"
+      ],
+      "tags": [
+        "chaud",
+        "enfant",
+        "sans_cafeine",
+        "sans_gluten",
+        "signature",
+        "sucre",
+        "vegetarien"
+      ],
+      "calories": 210,
+      "prep_time_min": 4,
+      "available": true,
+      "popular": true,
+      "gender": "m",
+      "aliases": [
+        "chocolat chaud",
+        "chocolat",
+        "hot chocolate",
+        "chocolat au lait",
+        "شوكولا ساخنة",
+        "chocolat chod"
+      ],
+      "image": "images/chocolat_chaud.jpg"
+    },
+    {
+      "id": 10,
+      "name": "Café Glacé",
+      "category": "cafe",
+      "price": 5.5,
+      "description": "Latte glacé servi avec des glaçons et un trait de sirop de vanille.",
+      "ingredients": [
+        "espresso",
+        "lait",
+        "glaçons",
+        "sirop de vanille"
+      ],
+      "allergens": [
+        "lait"
+      ],
+      "tags": [
+        "contient_cafeine",
+        "froid",
+        "sans_gluten",
+        "sucre",
+        "vegetarien"
+      ],
+      "calories": 140,
+      "prep_time_min": 4,
+      "available": true,
+      "popular": false,
+      "gender": "m",
+      "aliases": [
+        "iced coffee",
+        "iced latte",
+        "café frappé",
+        "frappé",
+        "frappe",
+        "café froid",
+        "قهوة مثلجة"
+      ],
+      "image": "images/cafe_glace.jpg"
+    },
+    {
+      "id": 11,
+      "name": "Thé à la Menthe",
+      "category": "the",
+      "price": 2.5,
+      "description": "Le thé vert à la menthe fraîche, sucré, servi en verre.",
+      "ingredients": [
+        "thé vert",
+        "menthe fraîche",
+        "sucre"
+      ],
+      "allergens": [],
+      "tags": [
+        "chaud",
+        "contient_cafeine",
+        "sans_gluten",
+        "sans_lactose",
+        "signature",
+        "sucre",
+        "vegan",
+        "vegetarien"
+      ],
+      "calories": 30,
+      "prep_time_min": 4,
+      "available": true,
+      "popular": true,
+      "gender": "m",
+      "aliases": [
+        "thé menthe",
+        "the menthe",
+        "thé vert",
+        "atay",
+        "tay",
+        "thé tunisien",
+        "شاي بالنعناع",
+        "شاي",
+        "tay bel na3na3",
+        "the a la menthe"
+      ],
+      "image": "images/the_a_la_menthe.jpg"
+    },
+    {
+      "id": 12,
+      "name": "Thé aux Pignons",
+      "category": "the",
+      "price": 4.5,
+      "description": "Thé vert à la menthe garni de pignons de pin, une spécialité tunisienne.",
+      "ingredients": [
+        "thé vert",
+        "menthe",
+        "sucre",
+        "pignons de pin"
+      ],
+      "allergens": [
+        "fruits_a_coque"
+      ],
+      "tags": [
+        "chaud",
+        "contient_cafeine",
+        "sans_gluten",
+        "sans_lactose",
+        "signature",
+        "sucre",
+        "vegan",
+        "vegetarien"
+      ],
+      "calories": 80,
+      "prep_time_min": 5,
+      "available": true,
+      "popular": true,
+      "gender": "m",
+      "aliases": [
+        "thé pignons",
+        "tay bel snouber",
+        "snobar",
+        "thé aux amandes",
+        "شاي بالصنوبر",
+        "the aux pignons"
+      ],
+      "image": "images/the_aux_pignons.jpg"
+    },
+    {
+      "id": 13,
+      "name": "Thé Noir",
+      "category": "the",
+      "price": 2.5,
+      "description": "Thé noir infusé, servi nature ou avec citron.",
+      "ingredients": [
+        "thé noir",
+        "citron en option"
+      ],
+      "allergens": [],
+      "tags": [
+        "chaud",
+        "contient_cafeine",
+        "sans_gluten",
+        "sans_lactose",
+        "vegan",
+        "vegetarien"
+      ],
+      "calories": 2,
+      "prep_time_min": 3,
+      "available": true,
+      "popular": false,
+      "gender": "m",
+      "aliases": [
+        "the noir",
+        "black tea",
+        "tay khal",
+        "thé anglais",
+        "شاي أسود"
+      ],
+      "image": "images/the_noir.jpg"
+    },
+    {
+      "id": 14,
+      "name": "Infusion Verveine",
+      "category": "the",
+      "price": 2.5,
+      "description": "Infusion de verveine, apaisante et sans caféine.",
+      "ingredients": [
+        "verveine"
+      ],
+      "allergens": [],
+      "tags": [
+        "chaud",
+        "sans_cafeine",
+        "sans_gluten",
+        "sans_lactose",
+        "vegan",
+        "vegetarien"
+      ],
+      "calories": 2,
+      "prep_time_min": 3,
+      "available": true,
+      "popular": false,
+      "gender": "f",
+      "aliases": [
+        "verveine",
+        "louiza",
+        "لويزة",
+        "tisane verveine",
+        "infusion"
+      ],
+      "image": "images/infusion_verveine.jpg"
+    },
+    {
+      "id": 15,
+      "name": "Infusion Camomille",
+      "category": "the",
+      "price": 2.5,
+      "description": "Infusion de camomille, parfaite en soirée.",
+      "ingredients": [
+        "camomille"
+      ],
+      "allergens": [],
+      "tags": [
+        "chaud",
+        "sans_cafeine",
+        "sans_gluten",
+        "sans_lactose",
+        "vegan",
+        "vegetarien"
+      ],
+      "calories": 2,
+      "prep_time_min": 3,
+      "available": true,
+      "popular": false,
+      "gender": "f",
+      "aliases": [
+        "camomille",
+        "babounj",
+        "بابونج",
+        "tisane camomille"
+      ],
+      "image": "images/infusion_camomille.jpg"
+    },
+    {
+      "id": 16,
+      "name": "Thé Gingembre-Citron",
+      "category": "the",
+      "price": 3.0,
+      "description": "Infusion de gingembre frais, citron et miel.",
+      "ingredients": [
+        "gingembre frais",
+        "citron",
+        "miel"
+      ],
+      "allergens": [],
+      "tags": [
+        "chaud",
+        "sans_cafeine",
+        "sans_gluten",
+        "sans_lactose",
+        "vegetarien"
+      ],
+      "calories": 35,
+      "prep_time_min": 4,
+      "available": true,
+      "popular": false,
+      "gender": "m",
+      "aliases": [
+        "gingembre",
+        "thé gingembre",
+        "ginger tea",
+        "zanjabil",
+        "زنجبيل",
+        "the citron gingembre"
+      ],
+      "image": "images/the_gingembre_citron.jpg"
+    },
+    {
+      "id": 17,
+      "name": "Jus d'Orange Frais",
+      "category": "jus",
+      "price": 4.5,
+      "description": "Oranges pressées minute, sans sucre ajouté.",
+      "ingredients": [
+        "oranges pressées"
+      ],
+      "allergens": [],
+      "tags": [
+        "froid",
+        "leger",
+        "sans_cafeine",
+        "sans_gluten",
+        "sans_lactose",
+        "sans_sucre",
+        "signature",
+        "vegan",
+        "vegetarien"
+      ],
+      "calories": 110,
+      "prep_time_min": 3,
+      "available": true,
+      "popular": true,
+      "gender": "m",
+      "aliases": [
+        "jus orange",
+        "jus d'orange",
+        "orange pressée",
+        "3assir bortokal",
+        "عصير برتقال",
+        "orange juice",
+        "jus dorange"
+      ],
+      "image": "images/jus_d_orange_frais.jpg"
+    },
+    {
+      "id": 18,
+      "name": "Jus de Fraise",
+      "category": "jus",
+      "price": 5.5,
+      "description": "Fraises fraîches mixées avec un peu de lait ou d'eau selon votre choix.",
+      "ingredients": [
+        "fraises",
+        "lait ou eau",
+        "sucre"
+      ],
+      "allergens": [
+        "lait"
+      ],
+      "tags": [
+        "froid",
+        "sans_cafeine",
+        "sans_gluten",
+        "sucre",
+        "vegetarien"
+      ],
+      "calories": 160,
+      "prep_time_min": 4,
+      "available": true,
+      "popular": false,
+      "gender": "m",
+      "aliases": [
+        "jus fraise",
+        "fraise",
+        "3assir fraise",
+        "عصير فراولة",
+        "strawberry juice",
+        "jus de fraises"
+      ],
+      "image": "images/jus_de_fraise.jpg"
+    },
+    {
+      "id": 19,
+      "name": "Jus d'Avocat",
+      "category": "jus",
+      "price": 6.0,
+      "description": "Avocat mixé avec du lait, onctueux et nourrissant.",
+      "ingredients": [
+        "avocat",
+        "lait",
+        "sucre"
+      ],
+      "allergens": [
+        "lait"
+      ],
+      "tags": [
+        "copieux",
+        "froid",
+        "sans_cafeine",
+        "sans_gluten",
+        "sucre",
+        "vegetarien"
+      ],
+      "calories": 320,
+      "prep_time_min": 4,
+      "available": true,
+      "popular": false,
+      "gender": "m",
+      "aliases": [
+        "jus avocat",
+        "avocat",
+        "avocat lait",
+        "3assir avocat",
+        "عصير أفوكادو",
+        "avocado juice"
+      ],
+      "image": "images/jus_d_avocat.jpg"
+    },
+    {
+      "id": 20,
+      "name": "Cocktail de Fruits",
+      "category": "jus",
+      "price": 7.0,
+      "description": "Verrine de jus en couches : avocat, banane, fraise, lait et amandes effilées.",
+      "ingredients": [
+        "avocat",
+        "banane",
+        "fraise",
+        "lait",
+        "amandes effilées"
+      ],
+      "allergens": [
+        "fruits_a_coque",
+        "lait"
+      ],
+      "tags": [
+        "copieux",
+        "froid",
+        "sans_cafeine",
+        "sans_gluten",
+        "signature",
+        "sucre",
+        "vegetarien"
+      ],
+      "calories": 380,
+      "prep_time_min": 6,
+      "available": true,
+      "popular": true,
+      "gender": "m",
+      "aliases": [
+        "cocktail",
+        "jus cocktail",
+        "cocktail fruits",
+        "cocktail tunisien",
+        "كوكتال",
+        "cocktail jus"
+      ],
+      "image": "images/cocktail_de_fruits.jpg"
+    },
+    {
+      "id": 21,
+      "name": "Smoothie Mangue",
+      "category": "jus",
+      "price": 6.5,
+      "description": "Mangue mixée avec yaourt nature et un filet de miel.",
+      "ingredients": [
+        "mangue",
+        "yaourt",
+        "miel",
+        "glaçons"
+      ],
+      "allergens": [
+        "lait"
+      ],
+      "tags": [
+        "froid",
+        "sans_cafeine",
+        "sans_gluten",
+        "sucre",
+        "vegetarien"
+      ],
+      "calories": 190,
+      "prep_time_min": 4,
+      "available": true,
+      "popular": false,
+      "gender": "m",
+      "aliases": [
+        "smoothie mangue",
+        "mangue",
+        "mango smoothie",
+        "smoothie à la mangue",
+        "سموذي مانجو",
+        "mango"
+      ],
+      "image": "images/smoothie_mangue.jpg"
+    },
+    {
+      "id": 22,
+      "name": "Smoothie Fruits Rouges",
+      "category": "jus",
+      "price": 6.5,
+      "description": "Fraises, framboises et myrtilles mixées avec du jus de pomme.",
+      "ingredients": [
+        "fraises",
+        "framboises",
+        "myrtilles",
+        "jus de pomme"
+      ],
+      "allergens": [],
+      "tags": [
+        "froid",
+        "leger",
+        "sans_cafeine",
+        "sans_gluten",
+        "sans_lactose",
+        "sucre",
+        "vegan",
+        "vegetarien"
+      ],
+      "calories": 130,
+      "prep_time_min": 4,
+      "available": true,
+      "popular": false,
+      "gender": "m",
+      "aliases": [
+        "smoothie fruits rouges",
+        "fruits rouges",
+        "berry smoothie",
+        "smoothie rouge",
+        "سموذي فواكه حمراء",
+        "smoothie fraise"
+      ],
+      "image": "images/smoothie_fruits_rouges.jpg"
+    },
+    {
+      "id": 23,
+      "name": "Citronnade Menthe",
+      "category": "boisson_froide",
+      "price": 4.0,
+      "description": "Citron pressé, menthe fraîche et eau pétillante, bien glacée.",
+      "ingredients": [
+        "citron",
+        "menthe fraîche",
+        "sucre",
+        "eau"
+      ],
+      "allergens": [],
+      "tags": [
+        "froid",
+        "sans_cafeine",
+        "sans_gluten",
+        "sans_lactose",
+        "signature",
+        "sucre",
+        "vegan",
+        "vegetarien"
+      ],
+      "calories": 90,
+      "prep_time_min": 3,
+      "available": true,
+      "popular": true,
+      "gender": "f",
+      "aliases": [
+        "citronnade",
+        "limonade maison",
+        "citron menthe",
+        "limonade",
+        "ليمونادة",
+        "lemonade",
+        "9ass7a limoun"
+      ],
+      "image": "images/citronnade_menthe.jpg"
+    },
+    {
+      "id": 24,
+      "name": "Ice Tea Pêche",
+      "category": "boisson_froide",
+      "price": 4.0,
+      "description": "Thé noir glacé parfumé à la pêche.",
+      "ingredients": [
+        "thé noir",
+        "arôme de pêche",
+        "sucre",
+        "glaçons"
+      ],
+      "allergens": [],
+      "tags": [
+        "contient_cafeine",
+        "froid",
+        "sans_gluten",
+        "sans_lactose",
+        "sucre",
+        "vegan",
+        "vegetarien"
+      ],
+      "calories": 80,
+      "prep_time_min": 2,
+      "available": true,
+      "popular": false,
+      "gender": "m",
+      "aliases": [
+        "ice tea",
+        "iced tea",
+        "thé glacé",
+        "the glacé",
+        "ice tea peche",
+        "آيس تي"
+      ],
+      "image": "images/ice_tea_peche.jpg"
+    },
+    {
+      "id": 25,
+      "name": "Mojito Sans Alcool",
+      "category": "boisson_froide",
+      "price": 6.0,
+      "description": "Citron vert, menthe, sucre de canne et eau gazeuse. Sans alcool.",
+      "ingredients": [
+        "citron vert",
+        "menthe",
+        "sucre de canne",
+        "eau gazeuse",
+        "glaçons"
+      ],
+      "allergens": [],
+      "tags": [
+        "froid",
+        "sans_cafeine",
+        "sans_gluten",
+        "sans_lactose",
+        "sucre",
+        "vegan",
+        "vegetarien"
+      ],
+      "calories": 100,
+      "prep_time_min": 4,
+      "available": true,
+      "popular": false,
+      "gender": "m",
+      "aliases": [
+        "mojito",
+        "virgin mojito",
+        "mojito vierge",
+        "موهيتو",
+        "mojito sans alcool",
+        "mohito"
+      ],
+      "image": "images/mojito_sans_alcool.jpg"
+    },
+    {
+      "id": 26,
+      "name": "Boisson Gazeuse",
+      "category": "boisson_froide",
+      "price": 3.0,
+      "description": "Canette de soda au choix, servie avec des glaçons.",
+      "ingredients": [
+        "soda"
+      ],
+      "allergens": [],
+      "tags": [
+        "froid",
+        "sans_gluten",
+        "sans_lactose",
+        "sucre",
+        "vegan",
+        "vegetarien"
+      ],
+      "calories": 140,
+      "prep_time_min": 1,
+      "available": true,
+      "popular": false,
+      "gender": "f",
+      "aliases": [
+        "soda",
+        "coca",
+        "coca cola",
+        "cola",
+        "fanta",
+        "sprite",
+        "boga",
+        "boga cidre",
+        "gazeuse",
+        "canette",
+        "مشروب غازي",
+        "gazouz",
+        "ghazouz",
+        "boisson gazeuse"
+      ],
+      "options": [
+        "Coca-Cola",
+        "Fanta",
+        "Sprite",
+        "Boga Cidre"
+      ],
+      "image": "images/boisson_gazeuse.jpg"
+    },
+    {
+      "id": 27,
+      "name": "Eau Minérale",
+      "category": "boisson_froide",
+      "price": 1.5,
+      "description": "Bouteille d'eau minérale de 50 cl.",
+      "ingredients": [
+        "eau minérale"
+      ],
+      "allergens": [],
+      "tags": [
+        "froid",
+        "sans_cafeine",
+        "sans_gluten",
+        "sans_lactose",
+        "sans_sucre",
+        "vegan",
+        "vegetarien"
+      ],
+      "calories": 0,
+      "prep_time_min": 1,
+      "available": true,
+      "popular": false,
+      "gender": "f",
+      "aliases": [
+        "eau",
+        "eau minerale",
+        "bouteille d'eau",
+        "water",
+        "ma",
+        "ماء",
+        "mineral water",
+        "el ma"
+      ],
+      "image": "images/eau_minerale.jpg"
+    },
+    {
+      "id": 28,
+      "name": "Eau Gazeuse",
+      "category": "boisson_froide",
+      "price": 2.5,
+      "description": "Eau minérale pétillante de 50 cl.",
+      "ingredients": [
+        "eau minérale gazeuse"
+      ],
+      "allergens": [],
+      "tags": [
+        "froid",
+        "sans_cafeine",
+        "sans_gluten",
+        "sans_lactose",
+        "sans_sucre",
+        "vegan",
+        "vegetarien"
+      ],
+      "calories": 0,
+      "prep_time_min": 1,
+      "available": true,
+      "popular": false,
+      "gender": "f",
+      "aliases": [
+        "eau pétillante",
+        "eau petillante",
+        "sparkling water",
+        "eau gaz",
+        "ماء غازي",
+        "perrier"
+      ],
+      "image": "images/eau_gazeuse.jpg"
+    },
+    {
+      "id": 29,
+      "name": "Petit-déjeuner Tunisien",
+      "category": "petit_dejeuner",
+      "price": 12.0,
+      "description": "Œufs, fromage, olives, confiture, miel et pain tabouna, avec une boisson chaude au choix.",
+      "ingredients": [
+        "œufs",
+        "fromage",
+        "olives",
+        "confiture",
+        "miel",
+        "pain tabouna",
+        "huile d'olive",
+        "boisson chaude"
+      ],
+      "allergens": [
+        "gluten",
+        "lait",
+        "oeufs"
+      ],
+      "tags": [
+        "copieux",
+        "petit_dejeuner",
+        "signature",
+        "vegetarien"
+      ],
+      "calories": 650,
+      "prep_time_min": 12,
+      "available": true,
+      "popular": true,
+      "gender": "m",
+      "aliases": [
+        "petit dej tunisien",
+        "breakfast tunisien",
+        "ftour tunisien",
+        "petit déj tunisien",
+        "فطور تونسي",
+        "petit dejeuner tunisien",
+        "ftour sbeh"
+      ],
+      "image": "images/petit_dejeuner_tunisien.jpg"
+    },
+    {
+      "id": 30,
+      "name": "Petit-déjeuner Continental",
+      "category": "petit_dejeuner",
+      "price": 10.0,
+      "description": "Croissant, baguette, beurre, confiture, jus d'orange et boisson chaude.",
+      "ingredients": [
+        "croissant",
+        "baguette",
+        "beurre",
+        "confiture",
+        "jus d'orange",
+        "boisson chaude"
+      ],
+      "allergens": [
+        "gluten",
+        "lait",
+        "oeufs"
+      ],
+      "tags": [
+        "petit_dejeuner",
+        "vegetarien"
+      ],
+      "calories": 580,
+      "prep_time_min": 8,
+      "available": true,
+      "popular": false,
+      "gender": "m",
+      "aliases": [
+        "petit dej continental",
+        "continental breakfast",
+        "petit déj continental",
+        "breakfast",
+        "petit dejeuner continental",
+        "فطور كونتيننتال"
+      ],
+      "image": "images/petit_dejeuner_continental.jpg"
+    },
+    {
+      "id": 31,
+      "name": "Omelette Fromage",
+      "category": "petit_dejeuner",
+      "price": 7.0,
+      "description": "Omelette de trois œufs au fromage, servie avec salade verte et pain.",
+      "ingredients": [
+        "œufs",
+        "fromage",
+        "salade verte",
+        "pain"
+      ],
+      "allergens": [
+        "gluten",
+        "lait",
+        "oeufs"
+      ],
+      "tags": [
+        "copieux",
+        "petit_dejeuner",
+        "vegetarien"
+      ],
+      "calories": 420,
+      "prep_time_min": 10,
+      "available": true,
+      "popular": false,
+      "gender": "f",
+      "aliases": [
+        "omelette",
+        "omelette au fromage",
+        "omlette",
+        "cheese omelette",
+        "عجة بالجبن",
+        "3ejja"
+      ],
+      "image": "images/omelette_fromage.jpg"
+    },
+    {
+      "id": 32,
+      "name": "Pancakes Sirop d'Érable",
+      "category": "petit_dejeuner",
+      "price": 8.5,
+      "description": "Pile de pancakes moelleux, sirop d'érable, beurre et fruits frais.",
+      "ingredients": [
+        "pancakes",
+        "sirop d'érable",
+        "beurre",
+        "fruits frais"
+      ],
+      "allergens": [
+        "gluten",
+        "lait",
+        "oeufs"
+      ],
+      "tags": [
+        "petit_dejeuner",
+        "sucre",
+        "vegetarien"
+      ],
+      "calories": 520,
+      "prep_time_min": 10,
+      "available": true,
+      "popular": false,
+      "gender": "m",
+      "aliases": [
+        "pancakes",
+        "pancake",
+        "pan cake",
+        "pancakes sirop",
+        "بانكايك"
+      ],
+      "image": "images/pancakes_sirop_d_erable.jpg"
+    },
+    {
+      "id": 33,
+      "name": "Croissant",
+      "category": "viennoiserie",
+      "price": 2.0,
+      "description": "Croissant pur beurre, croustillant.",
+      "ingredients": [
+        "farine",
+        "beurre",
+        "levure"
+      ],
+      "allergens": [
+        "gluten",
+        "lait"
+      ],
+      "tags": [
+        "petit_dejeuner",
+        "vegetarien"
+      ],
+      "calories": 230,
+      "prep_time_min": 1,
+      "available": true,
+      "popular": false,
+      "gender": "m",
+      "aliases": [
+        "croissant nature",
+        "croissant beurre",
+        "كرواسون",
+        "croissan",
+        "croisant"
+      ],
+      "image": "images/croissant.jpg"
+    },
+    {
+      "id": 34,
+      "name": "Pain au Chocolat",
+      "category": "viennoiserie",
+      "price": 2.5,
+      "description": "Viennoiserie feuilletée garnie de deux barres de chocolat.",
+      "ingredients": [
+        "farine",
+        "beurre",
+        "chocolat"
+      ],
+      "allergens": [
+        "gluten",
+        "lait"
+      ],
+      "tags": [
+        "petit_dejeuner",
+        "sucre",
+        "vegetarien"
+      ],
+      "calories": 270,
+      "prep_time_min": 1,
+      "available": true,
+      "popular": false,
+      "gender": "m",
+      "aliases": [
+        "pain choco",
+        "chocolatine",
+        "pain chocolat",
+        "بان أو شوكولا",
+        "pain au choco"
+      ],
+      "image": "images/pain_au_chocolat.jpg"
+    },
+    {
+      "id": 35,
+      "name": "Croissant aux Amandes",
+      "category": "viennoiserie",
+      "price": 3.5,
+      "description": "Croissant fourré à la crème d'amande et parsemé d'amandes effilées.",
+      "ingredients": [
+        "farine",
+        "beurre",
+        "crème d'amande",
+        "amandes effilées"
+      ],
+      "allergens": [
+        "fruits_a_coque",
+        "gluten",
+        "lait",
+        "oeufs"
+      ],
+      "tags": [
+        "sucre",
+        "vegetarien"
+      ],
+      "calories": 380,
+      "prep_time_min": 1,
+      "available": true,
+      "popular": false,
+      "gender": "m",
+      "aliases": [
+        "croissant amandes",
+        "croissant aux amandes",
+        "croissant amande",
+        "almond croissant",
+        "كرواسون باللوز"
+      ],
+      "image": "images/croissant_aux_amandes.jpg"
+    },
+    {
+      "id": 36,
+      "name": "Cake Citron",
+      "category": "viennoiserie",
+      "price": 3.5,
+      "description": "Tranche de cake moelleux au citron avec un glaçage léger.",
+      "ingredients": [
+        "farine",
+        "œufs",
+        "beurre",
+        "citron",
+        "sucre"
+      ],
+      "allergens": [
+        "gluten",
+        "lait",
+        "oeufs"
+      ],
+      "tags": [
+        "sucre",
+        "vegetarien"
+      ],
+      "calories": 310,
+      "prep_time_min": 1,
+      "available": true,
+      "popular": false,
+      "gender": "m",
+      "aliases": [
+        "cake",
+        "cake au citron",
+        "lemon cake",
+        "gâteau citron",
+        "كاك ليمون",
+        "cake limon"
+      ],
+      "image": "images/cake_citron.jpg"
+    },
+    {
+      "id": 37,
+      "name": "Sandwich Poulet",
+      "category": "sandwich",
+      "price": 8.0,
+      "description": "Baguette garnie de poulet grillé, fromage, salade, tomate et sauce maison.",
+      "ingredients": [
+        "baguette",
+        "poulet grillé",
+        "fromage",
+        "salade",
+        "tomate",
+        "sauce maison"
+      ],
+      "allergens": [
+        "gluten",
+        "lait",
+        "oeufs"
+      ],
+      "tags": [
+        "copieux",
+        "signature"
+      ],
+      "calories": 520,
+      "prep_time_min": 7,
+      "available": true,
+      "popular": true,
+      "gender": "m",
+      "aliases": [
+        "sandwich au poulet",
+        "sandwich poulet",
+        "poulet sandwich",
+        "chicken sandwich",
+        "baguette poulet",
+        "ساندويتش دجاج",
+        "sandwitch poulet",
+        "sandwich pouelt"
+      ],
+      "image": "images/sandwich_poulet.jpg"
+    },
+    {
+      "id": 38,
+      "name": "Sandwich Thon",
+      "category": "sandwich",
+      "price": 7.0,
+      "description": "Baguette au thon, œuf, olives, tomate, mayonnaise et harissa.",
+      "ingredients": [
+        "baguette",
+        "thon",
+        "œuf",
+        "olives",
+        "tomate",
+        "mayonnaise",
+        "harissa"
+      ],
+      "allergens": [
+        "gluten",
+        "oeufs",
+        "poisson"
+      ],
+      "tags": [
+        "epice",
+        "sans_lactose",
+        "signature"
+      ],
+      "calories": 480,
+      "prep_time_min": 6,
+      "available": true,
+      "popular": true,
+      "gender": "m",
+      "aliases": [
+        "baguette thon",
+        "sandwich au thon",
+        "tuna sandwich",
+        "sandwich thon",
+        "ساندويتش تن",
+        "sandwitch thon",
+        "casse croute thon",
+        "casse-croûte thon"
+      ],
+      "image": "images/sandwich_thon.jpg"
+    },
+    {
+      "id": 39,
+      "name": "Fricassé",
+      "category": "sandwich",
+      "price": 3.5,
+      "description": "Petit pain frit tunisien garni de thon, œuf dur, olives, pommes de terre et harissa.",
+      "ingredients": [
+        "pain frit",
+        "thon",
+        "œuf dur",
+        "olives",
+        "pommes de terre",
+        "harissa"
+      ],
+      "allergens": [
+        "gluten",
+        "oeufs",
+        "poisson"
+      ],
+      "tags": [
+        "epice",
+        "sans_lactose",
+        "signature"
+      ],
+      "calories": 430,
+      "prep_time_min": 5,
+      "available": true,
+      "popular": true,
+      "gender": "m",
+      "aliases": [
+        "fricassé tunisien",
+        "fricasse",
+        "fricassée",
+        "frikasse",
+        "فريكاسي",
+        "fricassés",
+        "fricassé thon"
+      ],
+      "image": "images/fricasse.jpg"
+    },
+    {
+      "id": 40,
+      "name": "Sandwich Végétarien",
+      "category": "sandwich",
+      "price": 6.5,
+      "description": "Baguette aux légumes grillés, fromage de chèvre, roquette et houmous.",
+      "ingredients": [
+        "baguette",
+        "légumes grillés",
+        "fromage de chèvre",
+        "roquette",
+        "houmous"
+      ],
+      "allergens": [
+        "gluten",
+        "lait",
+        "sesame"
+      ],
+      "tags": [
+        "vegetarien"
+      ],
+      "calories": 430,
+      "prep_time_min": 7,
+      "available": true,
+      "popular": false,
+      "gender": "m",
+      "aliases": [
+        "sandwich vegetarien",
+        "sandwich végé",
+        "veggie sandwich",
+        "sandwich legumes",
+        "ساندويتش خضر"
+      ],
+      "image": "images/sandwich_vegetarien.jpg"
+    },
+    {
+      "id": 41,
+      "name": "Panini Dinde Fromage",
+      "category": "sandwich",
+      "price": 7.5,
+      "description": "Panini grillé à la dinde fumée, mozzarella et tomate.",
+      "ingredients": [
+        "pain panini",
+        "dinde fumée",
+        "mozzarella",
+        "tomate"
+      ],
+      "allergens": [
+        "gluten",
+        "lait"
+      ],
+      "tags": [
+        "chaud"
+      ],
+      "calories": 470,
+      "prep_time_min": 6,
+      "available": true,
+      "popular": false,
+      "gender": "m",
+      "aliases": [
+        "panini",
+        "panini dinde",
+        "panini au fromage",
+        "paninni",
+        "بانيني",
+        "panini dinde fromage"
+      ],
+      "image": "images/panini_dinde_fromage.jpg"
+    },
+    {
+      "id": 42,
+      "name": "Club Sandwich",
+      "category": "sandwich",
+      "price": 11.0,
+      "description": "Trois étages de pain de mie grillé : poulet, œuf, fromage, tomate, salade. Servi avec frites.",
+      "ingredients": [
+        "pain de mie",
+        "poulet",
+        "œuf",
+        "fromage",
+        "tomate",
+        "salade",
+        "frites"
+      ],
+      "allergens": [
+        "gluten",
+        "lait",
+        "oeufs"
+      ],
+      "tags": [
+        "copieux"
+      ],
+      "calories": 780,
+      "prep_time_min": 10,
+      "available": true,
+      "popular": false,
+      "gender": "m",
+      "aliases": [
+        "club",
+        "club sandwiche",
+        "clube sandwich",
+        "كلوب ساندويتش",
+        "club sandwitch"
+      ],
+      "image": "images/club_sandwich.jpg"
+    },
+    {
+      "id": 43,
+      "name": "Salade César",
+      "category": "salade",
+      "price": 12.0,
+      "description": "Laitue romaine, poulet grillé, parmesan, croûtons et sauce césar.",
+      "ingredients": [
+        "laitue romaine",
+        "poulet grillé",
+        "parmesan",
+        "croûtons",
+        "sauce césar"
+      ],
+      "allergens": [
+        "gluten",
+        "lait",
+        "oeufs",
+        "poisson"
+      ],
+      "tags": [
+        "signature"
+      ],
+      "calories": 480,
+      "prep_time_min": 8,
+      "available": true,
+      "popular": true,
+      "gender": "f",
+      "aliases": [
+        "césar",
+        "cesar",
+        "caesar",
+        "salade cesar",
+        "caesar salad",
+        "سلطة سيزار",
+        "salade caesar",
+        "salade cézar"
+      ],
+      "image": "images/salade_cesar.jpg"
+    },
+    {
+      "id": 44,
+      "name": "Salade Niçoise",
+      "category": "salade",
+      "price": 11.0,
+      "description": "Thon, œuf dur, olives, tomates, poivrons et haricots verts avec vinaigrette.",
+      "ingredients": [
+        "thon",
+        "œuf dur",
+        "olives",
+        "tomates",
+        "poivrons",
+        "haricots verts",
+        "vinaigrette"
+      ],
+      "allergens": [
+        "moutarde",
+        "oeufs",
+        "poisson"
+      ],
+      "tags": [
+        "leger",
+        "sans_gluten",
+        "sans_lactose"
+      ],
+      "calories": 360,
+      "prep_time_min": 8,
+      "available": true,
+      "popular": false,
+      "gender": "f",
+      "aliases": [
+        "niçoise",
+        "nicoise",
+        "salade nicoise",
+        "nice salad",
+        "سلطة نيسواز",
+        "salade nissoise"
+      ],
+      "image": "images/salade_nicoise.jpg"
+    },
+    {
+      "id": 45,
+      "name": "Salade Méchouia",
+      "category": "salade",
+      "price": 7.5,
+      "description": "Poivrons et tomates grillés écrasés à l'huile d'olive et à l'harissa, avec thon et œuf.",
+      "ingredients": [
+        "poivrons grillés",
+        "tomates grillées",
+        "ail",
+        "huile d'olive",
+        "harissa",
+        "thon",
+        "œuf"
+      ],
+      "allergens": [
+        "oeufs",
+        "poisson"
+      ],
+      "tags": [
+        "epice",
+        "leger",
+        "sans_gluten",
+        "sans_lactose",
+        "signature"
+      ],
+      "calories": 230,
+      "prep_time_min": 6,
+      "available": true,
+      "popular": true,
+      "gender": "f",
+      "aliases": [
+        "méchouia",
+        "mechouia",
+        "salade mechouia",
+        "mechwia",
+        "slata mechouia",
+        "سلطة مشوية",
+        "mèchouia",
+        "slata mechwiya"
+      ],
+      "image": "images/salade_mechouia.jpg"
+    },
+    {
+      "id": 46,
+      "name": "Salade Quinoa Avocat",
+      "category": "salade",
+      "price": 11.5,
+      "description": "Quinoa, avocat, tomates cerises, concombre et graines de courge, vinaigrette au citron.",
+      "ingredients": [
+        "quinoa",
+        "avocat",
+        "tomates cerises",
+        "concombre",
+        "graines de courge",
+        "citron",
+        "huile d'olive"
+      ],
+      "allergens": [],
+      "tags": [
+        "leger",
+        "sans_gluten",
+        "sans_lactose",
+        "vegan",
+        "vegetarien"
+      ],
+      "calories": 340,
+      "prep_time_min": 7,
+      "available": true,
+      "popular": false,
+      "gender": "f",
+      "aliases": [
+        "salade quinoa",
+        "quinoa",
+        "quinoa salad",
+        "salade avocat",
+        "salade végétalienne",
+        "سلطة كينوا",
+        "salade vegan"
+      ],
+      "image": "images/salade_quinoa_avocat.jpg"
+    },
+    {
+      "id": 47,
+      "name": "Pizza Margherita",
+      "category": "pizza",
+      "price": 10.0,
+      "description": "Sauce tomate, mozzarella fondante et basilic frais.",
+      "ingredients": [
+        "pâte",
+        "sauce tomate",
+        "mozzarella",
+        "basilic"
+      ],
+      "allergens": [
+        "gluten",
+        "lait"
+      ],
+      "tags": [
+        "signature",
+        "vegetarien"
+      ],
+      "calories": 780,
+      "prep_time_min": 15,
+      "available": true,
+      "popular": true,
+      "gender": "f",
+      "aliases": [
+        "margherita",
+        "margarita",
+        "pizza margarita",
+        "pizza marguerita",
+        "بيتزا مارغريتا",
+        "pizza simple",
+        "pizza fromage tomate"
+      ],
+      "image": "images/pizza_margherita.jpg"
+    },
+    {
+      "id": 48,
+      "name": "Pizza Thon",
+      "category": "pizza",
+      "price": 12.0,
+      "description": "Sauce tomate, thon, olives, oignon et mozzarella.",
+      "ingredients": [
+        "pâte",
+        "sauce tomate",
+        "thon",
+        "olives",
+        "oignon",
+        "mozzarella"
+      ],
+      "allergens": [
+        "gluten",
+        "lait",
+        "poisson"
+      ],
+      "tags": [],
+      "calories": 850,
+      "prep_time_min": 15,
+      "available": true,
+      "popular": false,
+      "gender": "f",
+      "aliases": [
+        "pizza au thon",
+        "pizza thon",
+        "tuna pizza",
+        "بيتزا تن",
+        "pizza thone"
+      ],
+      "image": "images/pizza_thon.jpg"
+    },
+    {
+      "id": 49,
+      "name": "Pizza Quatre Fromages",
+      "category": "pizza",
+      "price": 13.5,
+      "description": "Mozzarella, gorgonzola, chèvre et parmesan.",
+      "ingredients": [
+        "pâte",
+        "mozzarella",
+        "gorgonzola",
+        "fromage de chèvre",
+        "parmesan"
+      ],
+      "allergens": [
+        "gluten",
+        "lait"
+      ],
+      "tags": [
+        "vegetarien"
+      ],
+      "calories": 920,
+      "prep_time_min": 15,
+      "available": false,
+      "popular": false,
+      "gender": "f",
+      "aliases": [
+        "4 fromages",
+        "quatre fromages",
+        "pizza 4 fromages",
+        "four cheese pizza",
+        "بيتزا 4 أجبان",
+        "pizza fromages",
+        "pizza 4 fromage"
+      ],
+      "availability_note": "Rupture temporaire de gorgonzola, de retour demain",
+      "image": "images/pizza_quatre_fromages.jpg"
+    },
+    {
+      "id": 50,
+      "name": "Pizza Poulet BBQ",
+      "category": "pizza",
+      "price": 13.0,
+      "description": "Poulet mariné, sauce barbecue, oignon rouge et mozzarella.",
+      "ingredients": [
+        "pâte",
+        "poulet",
+        "sauce barbecue",
+        "oignon rouge",
+        "mozzarella"
+      ],
+      "allergens": [
+        "gluten",
+        "lait",
+        "moutarde"
+      ],
+      "tags": [],
+      "calories": 890,
+      "prep_time_min": 15,
+      "available": true,
+      "popular": false,
+      "gender": "f",
+      "aliases": [
+        "pizza poulet",
+        "pizza bbq",
+        "pizza barbecue",
+        "bbq chicken pizza",
+        "بيتزا دجاج",
+        "pizza au poulet"
+      ],
+      "image": "images/pizza_poulet_bbq.jpg"
+    },
+    {
+      "id": 51,
+      "name": "Spaghetti Bolognaise",
+      "category": "pates",
+      "price": 12.5,
+      "description": "Spaghetti à la sauce tomate et au bœuf haché mijotée lentement.",
+      "ingredients": [
+        "spaghetti",
+        "bœuf haché",
+        "sauce tomate",
+        "oignon",
+        "carotte",
+        "parmesan"
+      ],
+      "allergens": [
+        "celeri",
+        "gluten",
+        "lait"
+      ],
+      "tags": [
+        "copieux",
+        "signature"
+      ],
+      "calories": 720,
+      "prep_time_min": 14,
+      "available": true,
+      "popular": true,
+      "gender": "m",
+      "aliases": [
+        "spaghetti",
+        "bolognaise",
+        "spaghetti bolo",
+        "spag bolo",
+        "سباغيتي",
+        "spaghetti à la bolognaise",
+        "spageti bolognaise"
+      ],
+      "image": "images/spaghetti_bolognaise.jpg"
+    },
+    {
+      "id": 52,
+      "name": "Penne Arrabbiata",
+      "category": "pates",
+      "price": 10.5,
+      "description": "Penne à la sauce tomate pimentée à l'ail et au basilic.",
+      "ingredients": [
+        "penne",
+        "sauce tomate",
+        "ail",
+        "piment",
+        "basilic",
+        "huile d'olive"
+      ],
+      "allergens": [
+        "gluten"
+      ],
+      "tags": [
+        "epice",
+        "sans_lactose",
+        "vegan",
+        "vegetarien"
+      ],
+      "calories": 560,
+      "prep_time_min": 12,
+      "available": true,
+      "popular": false,
+      "gender": "f",
+      "aliases": [
+        "penne",
+        "arrabbiata",
+        "penne arabiata",
+        "penne piquante",
+        "بيني",
+        "pâtes piquantes",
+        "penne arrabiata"
+      ],
+      "image": "images/penne_arrabbiata.jpg"
+    },
+    {
+      "id": 53,
+      "name": "Tagliatelles Poulet Champignons",
+      "category": "pates",
+      "price": 13.0,
+      "description": "Tagliatelles à la crème, poulet et champignons de Paris.",
+      "ingredients": [
+        "tagliatelles",
+        "poulet",
+        "champignons",
+        "crème fraîche",
+        "ail"
+      ],
+      "allergens": [
+        "gluten",
+        "lait",
+        "oeufs"
+      ],
+      "tags": [
+        "copieux"
+      ],
+      "calories": 760,
+      "prep_time_min": 14,
+      "available": true,
+      "popular": false,
+      "gender": "f",
+      "aliases": [
+        "tagliatelles",
+        "tagliatelle poulet",
+        "pâtes poulet",
+        "pates poulet",
+        "pâtes crème poulet",
+        "تاليتلي",
+        "pates champignons"
+      ],
+      "image": "images/tagliatelles_poulet_champignons.jpg"
+    },
+    {
+      "id": 54,
+      "name": "Lasagnes Bœuf",
+      "category": "pates",
+      "price": 13.5,
+      "description": "Lasagnes gratinées au bœuf, sauce tomate et béchamel.",
+      "ingredients": [
+        "pâtes à lasagne",
+        "bœuf haché",
+        "sauce tomate",
+        "béchamel",
+        "mozzarella"
+      ],
+      "allergens": [
+        "celeri",
+        "gluten",
+        "lait",
+        "oeufs"
+      ],
+      "tags": [
+        "copieux"
+      ],
+      "calories": 810,
+      "prep_time_min": 16,
+      "available": true,
+      "popular": false,
+      "gender": "f",
+      "aliases": [
+        "lasagne",
+        "lasagnes",
+        "lasagnes boeuf",
+        "lasagna",
+        "لازانيا",
+        "lasagnes à la viande",
+        "lazagne"
+      ],
+      "image": "images/lasagnes_buf.jpg"
+    },
+    {
+      "id": 55,
+      "name": "Escalope Grillée",
+      "category": "plat",
+      "price": 15.0,
+      "description": "Escalope de poulet grillée, frites maison et salade verte.",
+      "ingredients": [
+        "escalope de poulet",
+        "frites",
+        "salade verte",
+        "citron"
+      ],
+      "allergens": [],
+      "tags": [
+        "copieux",
+        "sans_gluten",
+        "sans_lactose",
+        "signature"
+      ],
+      "calories": 620,
+      "prep_time_min": 15,
+      "available": true,
+      "popular": true,
+      "gender": "f",
+      "aliases": [
+        "escalope",
+        "escalope poulet",
+        "escalope grillée",
+        "escalope de poulet",
+        "grilled chicken",
+        "إسكالوب",
+        "escalope grille"
+      ],
+      "image": "images/escalope_grillee.jpg"
+    },
+    {
+      "id": 56,
+      "name": "Burger Classique",
+      "category": "plat",
+      "price": 14.0,
+      "description": "Steak haché, cheddar, salade, tomate, oignons, sauce burger, avec frites.",
+      "ingredients": [
+        "pain burger",
+        "steak haché",
+        "cheddar",
+        "salade",
+        "tomate",
+        "oignons",
+        "sauce burger",
+        "frites"
+      ],
+      "allergens": [
+        "gluten",
+        "lait",
+        "moutarde",
+        "oeufs",
+        "sesame"
+      ],
+      "tags": [
+        "copieux",
+        "signature"
+      ],
+      "calories": 880,
+      "prep_time_min": 12,
+      "available": true,
+      "popular": true,
+      "gender": "m",
+      "aliases": [
+        "burger",
+        "hamburger",
+        "cheeseburger",
+        "burger classique",
+        "burger boeuf",
+        "برغر",
+        "bourger"
+      ],
+      "image": "images/burger_classique.jpg"
+    },
+    {
+      "id": 57,
+      "name": "Burger Poulet Croustillant",
+      "category": "plat",
+      "price": 13.0,
+      "description": "Filet de poulet croustillant, salade, tomate, sauce maison, avec frites.",
+      "ingredients": [
+        "pain burger",
+        "poulet pané",
+        "salade",
+        "tomate",
+        "sauce maison",
+        "frites"
+      ],
+      "allergens": [
+        "gluten",
+        "lait",
+        "oeufs",
+        "sesame"
+      ],
+      "tags": [
+        "copieux"
+      ],
+      "calories": 840,
+      "prep_time_min": 12,
+      "available": true,
+      "popular": false,
+      "gender": "m",
+      "aliases": [
+        "burger poulet",
+        "crispy chicken burger",
+        "chicken burger",
+        "burger au poulet",
+        "برغر دجاج",
+        "burger crispy"
+      ],
+      "image": "images/burger_poulet_croustillant.jpg"
+    },
+    {
+      "id": 58,
+      "name": "Ojja Merguez",
+      "category": "plat",
+      "price": 12.5,
+      "description": "Spécialité tunisienne : tomates, poivrons, harissa, œufs et merguez, servie avec du pain.",
+      "ingredients": [
+        "tomates",
+        "poivrons",
+        "harissa",
+        "œufs",
+        "merguez",
+        "ail",
+        "pain"
+      ],
+      "allergens": [
+        "gluten",
+        "oeufs"
+      ],
+      "tags": [
+        "copieux",
+        "epice",
+        "sans_lactose",
+        "signature"
+      ],
+      "calories": 590,
+      "prep_time_min": 14,
+      "available": true,
+      "popular": true,
+      "gender": "f",
+      "aliases": [
+        "ojja",
+        "oja",
+        "ojja merguez",
+        "ouja",
+        "عجة مرقاز",
+        "ojja au merguez",
+        "ojja tunisienne"
+      ],
+      "image": "images/ojja_merguez.jpg"
+    },
+    {
+      "id": 59,
+      "name": "Tajine Tunisien",
+      "category": "plat",
+      "price": 8.0,
+      "description": "Gratin tunisien aux œufs, poulet, fromage et persil, doré au four.",
+      "ingredients": [
+        "œufs",
+        "poulet",
+        "fromage",
+        "persil",
+        "pommes de terre",
+        "épices"
+      ],
+      "allergens": [
+        "lait",
+        "oeufs"
+      ],
+      "tags": [
+        "copieux",
+        "sans_gluten"
+      ],
+      "calories": 450,
+      "prep_time_min": 15,
+      "available": true,
+      "popular": false,
+      "gender": "m",
+      "aliases": [
+        "tajine",
+        "tajine tunisien",
+        "tajine poulet",
+        "طاجين",
+        "tajine jben",
+        "tajine au four"
+      ],
+      "image": "images/tajine_tunisien.jpg"
+    },
+    {
+      "id": 60,
+      "name": "Tiramisu",
+      "category": "dessert",
+      "price": 6.0,
+      "description": "Biscuits imbibés de café, crème de mascarpone et cacao.",
+      "ingredients": [
+        "biscuits cuillère",
+        "café",
+        "mascarpone",
+        "œufs",
+        "sucre",
+        "cacao"
+      ],
+      "allergens": [
+        "gluten",
+        "lait",
+        "oeufs"
+      ],
+      "tags": [
+        "signature",
+        "sucre",
+        "vegetarien"
+      ],
+      "calories": 380,
+      "prep_time_min": 2,
+      "available": true,
+      "popular": true,
+      "gender": "m",
+      "aliases": [
+        "tiramissu",
+        "tiramisù",
+        "tirami su",
+        "تيراميسو",
+        "tiramisu café"
+      ],
+      "image": "images/tiramisu.jpg"
+    },
+    {
+      "id": 61,
+      "name": "Cheesecake Fruits Rouges",
+      "category": "dessert",
+      "price": 7.0,
+      "description": "Cheesecake crémeux sur biscuit croustillant, nappé de coulis de fruits rouges.",
+      "ingredients": [
+        "fromage frais",
+        "biscuit",
+        "beurre",
+        "œufs",
+        "coulis de fruits rouges"
+      ],
+      "allergens": [
+        "gluten",
+        "lait",
+        "oeufs"
+      ],
+      "tags": [
+        "sucre",
+        "vegetarien"
+      ],
+      "calories": 410,
+      "prep_time_min": 2,
+      "available": true,
+      "popular": false,
+      "gender": "m",
+      "aliases": [
+        "cheesecake",
+        "cheese cake",
+        "cheesecake fruits rouges",
+        "تشيز كيك",
+        "cheesecake fraise"
+      ],
+      "image": "images/cheesecake_fruits_rouges.jpg"
+    },
+    {
+      "id": 62,
+      "name": "Fondant au Chocolat",
+      "category": "dessert",
+      "price": 7.0,
+      "description": "Gâteau au cœur coulant de chocolat noir, servi tiède avec une boule de vanille.",
+      "ingredients": [
+        "chocolat noir",
+        "beurre",
+        "œufs",
+        "farine",
+        "sucre",
+        "glace vanille"
+      ],
+      "allergens": [
+        "gluten",
+        "lait",
+        "oeufs"
+      ],
+      "tags": [
+        "chaud",
+        "signature",
+        "sucre",
+        "vegetarien"
+      ],
+      "calories": 460,
+      "prep_time_min": 10,
+      "available": true,
+      "popular": true,
+      "gender": "m",
+      "aliases": [
+        "fondant",
+        "moelleux chocolat",
+        "coulant chocolat",
+        "fondant chocolat",
+        "فوندون",
+        "chocolate lava cake"
+      ],
+      "image": "images/fondant_au_chocolat.jpg"
+    },
+    {
+      "id": 63,
+      "name": "Crêpe Nutella",
+      "category": "dessert",
+      "price": 6.0,
+      "description": "Crêpe fine garnie de pâte à tartiner chocolat-noisettes, avec banane en option.",
+      "ingredients": [
+        "crêpe",
+        "pâte à tartiner chocolat-noisettes",
+        "banane en option"
+      ],
+      "allergens": [
+        "fruits_a_coque",
+        "gluten",
+        "lait",
+        "oeufs"
+      ],
+      "tags": [
+        "chaud",
+        "enfant",
+        "signature",
+        "sucre",
+        "vegetarien"
+      ],
+      "calories": 430,
+      "prep_time_min": 6,
+      "available": true,
+      "popular": true,
+      "gender": "f",
+      "aliases": [
+        "crepe nutella",
+        "crêpe au nutella",
+        "crepe",
+        "crêpe",
+        "nutella",
+        "كريب نوتيلا"
+      ],
+      "image": "images/crepe_nutella.jpg"
+    },
+    {
+      "id": 64,
+      "name": "Makroudh",
+      "category": "dessert",
+      "price": 3.0,
+      "description": "Pâtisserie tunisienne à base de semoule fourrée aux dattes, frite et trempée dans le miel.",
+      "ingredients": [
+        "semoule",
+        "dattes",
+        "huile",
+        "miel",
+        "eau de fleur d'oranger"
+      ],
+      "allergens": [
+        "gluten"
+      ],
+      "tags": [
+        "sans_lactose",
+        "signature",
+        "sucre",
+        "vegetarien"
+      ],
+      "calories": 290,
+      "prep_time_min": 1,
+      "available": true,
+      "popular": true,
+      "gender": "m",
+      "aliases": [
+        "makroud",
+        "maqroud",
+        "makrout",
+        "مقروض",
+        "makroudh tunisien",
+        "makroudh dattes"
+      ],
+      "image": "images/makroudh.jpg"
+    },
+    {
+      "id": 65,
+      "name": "Baklawa",
+      "category": "dessert",
+      "price": 4.0,
+      "description": "Feuilletés de pâte filo garnis de pistaches et noix, parfumés au miel.",
+      "ingredients": [
+        "pâte filo",
+        "pistaches",
+        "noix",
+        "beurre",
+        "miel"
+      ],
+      "allergens": [
+        "fruits_a_coque",
+        "gluten",
+        "lait"
+      ],
+      "tags": [
+        "signature",
+        "sucre",
+        "vegetarien"
+      ],
+      "calories": 340,
+      "prep_time_min": 1,
+      "available": true,
+      "popular": true,
+      "gender": "f",
+      "aliases": [
+        "baklawa tunisienne",
+        "baklava",
+        "baklawa pistache",
+        "بقلاوة",
+        "baqlawa"
+      ],
+      "image": "images/baklawa.jpg"
+    },
+    {
+      "id": 66,
+      "name": "Salade de Fruits",
+      "category": "dessert",
+      "price": 5.0,
+      "description": "Fruits frais de saison coupés minute, sans sucre ajouté.",
+      "ingredients": [
+        "fruits frais de saison",
+        "jus d'orange"
+      ],
+      "allergens": [],
+      "tags": [
+        "froid",
+        "leger",
+        "sans_gluten",
+        "sans_lactose",
+        "sans_sucre",
+        "vegan",
+        "vegetarien"
+      ],
+      "calories": 120,
+      "prep_time_min": 4,
+      "available": true,
+      "popular": false,
+      "gender": "f",
+      "aliases": [
+        "salade fruits",
+        "fruits frais",
+        "fruit salad",
+        "سلطة فواكه",
+        "salade de fruit"
+      ],
+      "image": "images/salade_de_fruits.jpg"
+    },
+    {
+      "id": 67,
+      "name": "Glace Deux Boules",
+      "category": "dessert",
+      "price": 5.0,
+      "description": "Deux boules au choix : vanille, chocolat, fraise ou pistache.",
+      "ingredients": [
+        "lait",
+        "crème",
+        "sucre",
+        "parfum au choix"
+      ],
+      "allergens": [
+        "lait"
+      ],
+      "tags": [
+        "enfant",
+        "froid",
+        "sans_gluten",
+        "sucre",
+        "vegetarien"
+      ],
+      "calories": 260,
+      "prep_time_min": 2,
+      "available": true,
+      "popular": false,
+      "gender": "f",
+      "aliases": [
+        "glace",
+        "ice cream",
+        "boules de glace",
+        "2 boules",
+        "جلاس",
+        "glace 2 boules"
+      ],
+      "options": [
+        "Vanille",
+        "Chocolat",
+        "Fraise",
+        "Pistache"
+      ],
+      "image": "images/glace_deux_boules.jpg"
+    },
+    {
+      "id": 68,
+      "name": "Assidat Zgougou",
+      "category": "dessert",
+      "price": 5.0,
+      "description": "Crème de graines de pin d'Alep, garnie de noix et d'amandes. Dessert de saison.",
+      "ingredients": [
+        "graines de pin d'Alep",
+        "sucre",
+        "noix",
+        "amandes"
+      ],
+      "allergens": [
+        "fruits_a_coque"
+      ],
+      "tags": [
+        "chaud",
+        "sans_gluten",
+        "sans_lactose",
+        "sucre",
+        "vegan",
+        "vegetarien"
+      ],
+      "calories": 350,
+      "prep_time_min": 2,
+      "available": false,
+      "popular": false,
+      "gender": "f",
+      "aliases": [
+        "zgougou",
+        "assida zgougou",
+        "assidat zgougou",
+        "عصيدة الزقوقو",
+        "assida",
+        "عصيدة"
+      ],
+      "availability_note": "Dessert de saison, disponible uniquement pendant la période du Mouled",
+      "image": "images/assidat_zgougou.jpg"
+    }
+  ],
+  "formulas": [
+    {
+      "id": 101,
+      "name": "Formule Étudiant",
+      "price": 12.0,
+      "persons": 1,
+      "description": "Un sandwich au choix et une boisson au choix, sur présentation de la carte étudiante.",
+      "includes": [
+        "1 sandwich au choix (hors Club Sandwich)",
+        "1 boisson au choix (soda, eau, thé ou café)"
+      ],
+      "conditions": "Carte étudiante obligatoire. Valable tous les jours.",
+      "aliases": [
+        "formule etudiant",
+        "menu étudiant",
+        "menu etudiant",
+        "student deal",
+        "formule student",
+        "formule 12 dinars",
+        "صيغة الطالب"
+      ],
+      "available": true,
+      "image": "images/formule_etudiant.jpg"
+    },
+    {
+      "id": 102,
+      "name": "Formule Duo",
+      "price": 25.0,
+      "persons": 2,
+      "description": "Deux sandwichs et deux boissons, idéale pour partager un repas à deux.",
+      "includes": [
+        "2 sandwichs au choix (hors Club Sandwich)",
+        "2 boissons au choix (soda, eau, thé ou café)"
+      ],
+      "conditions": "Valable tous les jours.",
+      "aliases": [
+        "formule duo",
+        "menu duo",
+        "formule 2 personnes",
+        "formule pour deux",
+        "duo",
+        "couple deal",
+        "صيغة ثنائية"
+      ],
+      "available": true,
+      "image": "images/formule_duo.jpg"
+    },
+    {
+      "id": 103,
+      "name": "Formule Matin",
+      "price": 8.5,
+      "persons": 1,
+      "description": "Un croissant ou un pain au chocolat, une boisson chaude et un jus d'orange.",
+      "includes": [
+        "1 croissant ou pain au chocolat",
+        "1 boisson chaude (café ou thé)",
+        "1 jus d'orange frais"
+      ],
+      "conditions": "Servie jusqu'à 11h30.",
+      "aliases": [
+        "formule matin",
+        "formule petit dej",
+        "formule petit déjeuner",
+        "menu matin",
+        "morning deal",
+        "صيغة الصباح"
+      ],
+      "available": true,
+      "image": "images/formule_matin.jpg"
+    },
+    {
+      "id": 104,
+      "name": "Formule Midi",
+      "price": 19.0,
+      "persons": 1,
+      "description": "Une salade, une pizza ou des pâtes au choix, avec une boisson et un dessert.",
+      "includes": [
+        "1 salade, pizza ou plat de pâtes au choix",
+        "1 boisson au choix (hors cocktail et smoothies)",
+        "1 dessert au choix (hors Cheesecake et Fondant)"
+      ],
+      "conditions": "Du lundi au vendredi, de 12h00 à 15h00.",
+      "aliases": [
+        "formule midi",
+        "menu midi",
+        "formule déjeuner",
+        "formule dejeuner",
+        "lunch deal",
+        "menu du midi",
+        "صيغة الغداء"
+      ],
+      "available": true,
+      "image": "images/formule_midi.jpg"
+    },
+    {
+      "id": 105,
+      "name": "Formule Famille",
+      "price": 49.0,
+      "persons": 4,
+      "description": "Deux pizzas, deux plats de pâtes, quatre boissons et deux desserts à partager.",
+      "includes": [
+        "2 pizzas au choix",
+        "2 plats de pâtes au choix",
+        "4 boissons (soda, eau ou citronnade)",
+        "2 desserts au choix à partager"
+      ],
+      "conditions": "Pour 4 personnes. Valable tous les jours à partir de 12h00.",
+      "aliases": [
+        "formule famille",
+        "menu famille",
+        "formule 4 personnes",
+        "family deal",
+        "formule pour 4",
+        "صيغة العائلة"
+      ],
+      "available": true,
+      "image": "images/formule_famille.jpg"
+    },
+    {
+      "id": 106,
+      "name": "Formule Café Gourmand",
+      "price": 8.0,
+      "persons": 1,
+      "description": "Un café au choix (express, capucin ou direct) avec une pâtisserie tunisienne.",
+      "includes": [
+        "1 café au choix (express, capucin ou direct)",
+        "1 pâtisserie : Makroudh ou Baklawa"
+      ],
+      "conditions": "Valable tous les jours.",
+      "aliases": [
+        "café gourmand",
+        "formule cafe gourmand",
+        "gourmand",
+        "formule gourmande",
+        "كافي قورموند"
+      ],
+      "available": true,
+      "image": "images/formule_cafe_gourmand.jpg"
+    }
+  ],
+  "faq": [
+    {
+      "q": "Faites-vous des réductions pour les étudiants ?",
+      "a": "Oui, la Formule Étudiant à 12 DT est disponible sur présentation de la carte étudiante."
+    },
+    {
+      "q": "Peut-on apporter un gâteau d'anniversaire ?",
+      "a": "Oui, vous pouvez apporter votre gâteau. Prévenez-nous à l'avance pour la réservation de la table."
+    },
+    {
+      "q": "Acceptez-vous les animaux ?",
+      "a": "Les animaux sont acceptés uniquement sur la terrasse."
+    }
+  ]
+}

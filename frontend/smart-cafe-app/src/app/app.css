@@ -1,0 +1,411 @@
+/* ========================================================== */
+/* ☕ SMART CAFE IOT - STYLES GLOBAUX & MODERN DARK UI        */
+/* ========================================================== */
+
+:host {
+  display: block;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  min-height: 100vh;
+  background-color: #0D0805;
+  background-image:
+    radial-gradient(900px 500px at 12% -10%, rgba(242, 163, 65, 0.16), transparent 60%),
+    radial-gradient(700px 420px at 100% 0%, rgba(226, 89, 112, 0.10), transparent 60%),
+    radial-gradient(800px 500px at 50% 120%, rgba(179, 94, 27, 0.20), transparent 60%);
+  background-attachment: fixed;
+  color: #EAD7C3;
+}
+
+/* Glassmorphism Classes */
+.glass-navbar {
+  background: rgba(13, 8, 5, 0.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(242, 163, 65, 0.22);
+  z-index: 1020;
+}
+
+.glass-card {
+  background: rgba(56, 37, 22, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(242, 163, 65, 0.22);
+  border-radius: 16px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+}
+
+.brand-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #B35E1B, #F2A341);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #F2A341, #EAD7C3 60%, #E25970);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Nav Pills Custom */
+.nav-pills-custom {
+  gap: 4px;
+}
+
+.nav-pill-btn {
+  background: transparent;
+  border: none;
+  color: #C9B49C;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 20px;
+  transition: all 0.2s ease;
+}
+
+.nav-pill-btn:hover {
+  color: #FFFFFF;
+}
+
+.nav-pill-btn.active {
+  background: #B35E1B;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(179, 94, 27, 0.4);
+}
+
+.btn-gradient {
+  background: linear-gradient(135deg, #B35E1B, #E25970);
+  color: #ffffff;
+  border: none;
+}
+
+.btn-gradient:hover {
+  background: linear-gradient(135deg, #8f4a14, #c94560);
+  color: #ffffff;
+}
+
+/* Stat KPI Cards */
+.stat-card {
+  background: rgba(56, 37, 22, 0.6);
+  border: 1px solid rgba(242, 163, 65, 0.22);
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: transform 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(242, 163, 65, 0.5);
+}
+
+.stat-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+}
+
+.stat-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #C9B49C;
+  letter-spacing: 0.5px;
+}
+
+.stat-value {
+  font-size: 1.9rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.stat-sub {
+  font-size: 0.75rem;
+  color: #9c8468;
+}
+
+/* Video Wrapper */
+.video-wrapper img {
+  min-height: 320px;
+  object-fit: cover;
+  background: #000;
+}
+
+/* Table Item Cards */
+.table-list-scroll {
+  max-height: 440px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.table-item-card {
+  border: 1px solid rgba(242, 163, 65, 0.18);
+  background: rgba(13, 8, 5, 0.6);
+  transition: all 0.2s ease;
+}
+
+.bg-success-subtle-10 {
+  background: rgba(34, 197, 94, 0.08) !important;
+  border-color: rgba(34, 197, 94, 0.4) !important;
+}
+
+.bg-danger-subtle-10 {
+  background: rgba(239, 68, 68, 0.08) !important;
+  border-color: rgba(239, 68, 68, 0.4) !important;
+}
+
+.bg-warning-subtle-10 {
+  background: rgba(245, 158, 11, 0.08) !important;
+  border-color: rgba(245, 158, 11, 0.4) !important;
+}
+
+.timer-font {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.25rem;
+  letter-spacing: 1px;
+}
+
+/* Menu Filter Pills */
+.filter-pill {
+  background: rgba(56, 37, 22, 0.8);
+  border: 1px solid rgba(234, 215, 195, 0.4);
+  color: #C9B49C;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  transition: all 0.15s ease;
+}
+
+.filter-pill:hover {
+  color: #EAD7C3;
+  border-color: #F2A341;
+}
+
+.filter-pill.active {
+  background: #F2A341;
+  color: #0D0805;
+  border-color: #F2A341;
+  font-weight: 700;
+}
+
+/* Menu Item Cards */
+.menu-item-card {
+  background: rgba(13, 8, 5, 0.7);
+  border: 1px solid rgba(242, 163, 65, 0.18);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.menu-item-card:hover {
+  transform: translateY(-3px);
+  border-color: #F2A341;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Formula Cards */
+.formula-card {
+  background: linear-gradient(145deg, rgba(56, 37, 22, 0.8), rgba(13, 8, 5, 0.9));
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.formula-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(245, 158, 11, 0.8);
+}
+
+/* ========================================================== */
+/* CHATBOT IA FLOTTANT                                        */
+/* ========================================================== */
+
+.chat-widget-wrapper {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1050;
+}
+
+.chat-launcher-btn {
+  background: linear-gradient(135deg, #B35E1B, #E25970);
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 8px 25px rgba(179, 94, 27, 0.5);
+}
+
+.chat-launcher-btn:hover {
+  transform: scale(1.05);
+}
+
+.chat-window {
+  width: 380px;
+  height: 520px;
+  border-radius: 18px;
+  border: 2px solid #F2A341;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: rgba(13, 8, 5, 0.95);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+  animation: slideInUp 0.25s ease;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chat-header {
+  background: rgba(56, 37, 22, 0.9);
+}
+
+.avatar-robot {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(242, 163, 65, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-messages-body {
+  flex-grow: 1;
+}
+
+.message-bubble {
+  max-width: 82%;
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.user-bubble {
+  background: #B35E1B;
+  color: #ffffff;
+  border-bottom-right-radius: 4px;
+}
+
+.agent-bubble {
+  background: rgba(56, 37, 22, 0.9);
+  color: #EAD7C3;
+  border: 1px solid rgba(242, 163, 65, 0.3);
+  border-bottom-left-radius: 4px;
+}
+
+.chat-suggestions {
+  background: rgba(13, 8, 5, 0.8);
+}
+
+.suggestion-chip {
+  background: rgba(56, 37, 22, 0.8);
+  border: 1px solid rgba(242, 163, 65, 0.3);
+  color: #F2A341;
+  font-size: 0.72rem;
+  padding: 4px 10px;
+  border-radius: 12px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.suggestion-chip:hover {
+  background: #F2A341;
+  color: #0D0805;
+}
+
+.chat-footer {
+  background: rgba(56, 37, 22, 0.9);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(242, 163, 65, 0.4);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(242, 163, 65, 0.7);
+}
+
+
+/* ========================================================== */
+/* 🎨 THÈME CAFÉSENSE - Palette officielle du logo            */
+/* #FFFFFF #EAD7C3 #F2A341 #E25970 #B35E1B #382516 #0D0805    */
+/* ========================================================== */
+
+.brand-icon, .brand-logo { filter: drop-shadow(0 0 8px rgba(242, 163, 65, 0.55)); }
+
+.brand-logo { animation: logoGlow 3.2s ease-in-out infinite; }
+@keyframes logoGlow {
+  0%, 100% { filter: drop-shadow(0 0 5px rgba(242, 163, 65, 0.35)); }
+  50%      { filter: drop-shadow(0 0 14px rgba(242, 163, 65, 0.85)); }
+}
+
+/* Liseré lumineux "crème" en haut des cartes de verre */
+.glass-card { position: relative; overflow: hidden; }
+.glass-card::before {
+  content: "";
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, #F2A341, #EAD7C3, #E25970, transparent);
+  opacity: 0.75;
+}
+
+.glass-navbar { border-bottom: 1px solid rgba(242, 163, 65, 0.35); box-shadow: 0 4px 30px rgba(179, 94, 27, 0.15); }
+
+.stat-card { position: relative; overflow: hidden; }
+.stat-card::after {
+  content: ""; position: absolute; right: -30px; top: -30px; width: 90px; height: 90px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(242, 163, 65, 0.18), transparent 70%);
+}
+.stat-card:hover { box-shadow: 0 8px 24px rgba(242, 163, 65, 0.15); }
+
+.timer-font { color: #F2A341; text-shadow: 0 0 10px rgba(242, 163, 65, 0.4); }
+
+.btn-gradient { box-shadow: 0 4px 16px rgba(226, 89, 112, 0.30); }
+.chat-launcher-btn { box-shadow: 0 8px 25px rgba(226, 89, 112, 0.45); }
+.chat-window { box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7), 0 0 30px rgba(242, 163, 65, 0.15); }
+.chat-header, .chat-footer { border-color: rgba(242, 163, 65, 0.25) !important; }
+.user-bubble { background: linear-gradient(135deg, #B35E1B, #F2A341); color: #0D0805; font-weight: 500; }
+
+.form-control, .form-select {
+  background-color: rgba(56, 37, 22, 0.55) !important;
+  border-color: rgba(242, 163, 65, 0.3) !important;
+  color: #EAD7C3 !important;
+}
+.form-control:focus, .form-select:focus {
+  border-color: #F2A341 !important;
+  box-shadow: 0 0 0 0.2rem rgba(242, 163, 65, 0.25) !important;
+}
+.form-range::-webkit-slider-thumb { background: #F2A341; }
+.form-range::-webkit-slider-runnable-track { background: rgba(242, 163, 65, 0.3); }
+.form-check-input:checked { background-color: #F2A341; border-color: #F2A341; }

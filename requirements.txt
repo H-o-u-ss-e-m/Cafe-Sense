@@ -1,0 +1,13 @@
+# Core Vision & Détection des tables
+ultralytics>=8.0.0
+opencv-python>=4.8.0
+numpy>=1.24.0
+
+# Backend Serveur Web & API REST
+Flask>=3.0.0
+flask-cors>=4.0.0
+
+# Agent IA Conversationnel (Optionnel pour inférence LLM locale complète sur PC)
+# torch>=2.2.0
+# transformers>=4.48.0
+# peft>=0.14.0

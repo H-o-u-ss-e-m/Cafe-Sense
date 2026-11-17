@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Café - Surveillance & Occupation des Tables</title>
+    <!-- Bootstrap 5 CSS & FontAwesome Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        .navbar {
+            background: rgba(30, 41, 59, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #334155;
+        }
+        .card-custom {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .card-custom:hover {
+            border-color: #38bdf8;
+        }
+        .video-container {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #000;
+            border: 2px solid #334155;
+        }
+        .video-stream {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .status-badge {
+            font-size: 0.85rem;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        .badge-libre { background-color: rgba(34, 197, 94, 0.2); color: #4ade80; border: 1px solid #22c55e; }
+        .badge-occupee { background-color: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid #ef4444; }
+        .badge-depart { background-color: rgba(249, 115, 22, 0.2); color: #fb923c; border: 1px solid #f97316; }
+        .timer-display {
+            font-family: "Courier New", Courier, monospace;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #f1f5f9;
+        }
+        .stat-card-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barre de navigation -->
+    <nav class="navbar navbar-dark sticky-top px-4 py-3">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <span class="navbar-brand mb-0 h1 d-flex align-items-center gap-2">
+                <i class="fa-solid fa-mug-hot text-warning"></i>
+                <span>Smart Café IoT - Gestion en Temps Réel</span>
+            </span>
+            <div class="d-flex align-items-center gap-3">
+                <span id="live-indicator" class="badge bg-danger d-flex align-items-center gap-1">
+                    <i class="fa-solid fa-circle fa-beat" style="font-size: 8px;"></i> LIVE CAM
+                </span>
+                <button class="btn btn-outline-info btn-sm" onclick="recalibrateTables()">
+                    <i class="fa-solid fa-arrows-rotate"></i> Recalibrer les tables
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid px-4 py-4">
+        <!-- Ligne des Métriques Globales -->
+        <div class="row g-3 mb-4">
+            <div class="col-md-3">
+                <div class="card-custom p-3 text-center">
+                    <div class="text-secondary small fw-semibold">TOTAL TABLES</div>
+                    <div id="stat-total" class="stat-card-number text-info">--</div>
+                    <div class="small text-muted">Tables détectées</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card-custom p-3 text-center">
+                    <div class="text-secondary small fw-semibold">TABLES LIBRES</div>
+                    <div id="stat-free" class="stat-card-number text-success">--</div>
+                    <div class="small text-muted">Disponibles immédiatement</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card-custom p-3 text-center">
+                    <div class="text-secondary small fw-semibold">TABLES OCCUPÉES</div>
+                    <div id="stat-occupied" class="stat-card-number text-danger">--</div>
+                    <div class="small text-muted">Chronomètres actifs</div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card-custom p-3 text-center">
+                    <div class="text-secondary small fw-semibold">TAUX D'OCCUPATION</div>
+                    <div id="stat-rate" class="stat-card-number text-warning">--%</div>
+                    <div class="small text-muted">Remplissage de la salle</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <!-- Colonne Flux Vidéo Live -->
+            <div class="col-lg-7">
+                <div class="card-custom p-3">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <h6 class="m-0 fw-bold"><i class="fa-solid fa-video text-primary me-2"></i>Vue Caméra Surveillance</h6>
+                        <span class="small text-muted" id="timestamp-display">--:--:--</span>
+                    </div>
+                    <div class="video-container">
+                        <img src="/video_feed" alt="Flux Caméra Raspberry Pi" class="video-stream" onerror="this.onerror=null; this.src='https://placehold.co/640x360/000000/FFFFFF?text=Flux+Video+Non+Disponible';">
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-2 small text-muted">
+                        <span><i class="fa-solid fa-microchip"></i> Raspberry Pi & YOLO IA</span>
+                        <span>🟢 Vert = Libre | 🔴 Rouge = Occupé + Timer | 🟠 Orange = En départ</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Colonne Liste des Tables & Chronomètres -->
+            <div class="col-lg-5">
+                <div class="card-custom p-3 h-100">
+                    <h6 class="fw-bold mb-3"><i class="fa-solid fa-clock text-warning me-2"></i>Détail des Tables & Chronomètres</h6>
+                    <div id="tables-list" class="d-flex flex-column gap-3 overflow-auto" style="max-height: 600px;">
+                        <div class="text-center py-5 text-muted">
+                            <i class="fa-solid fa-spinner fa-spin fa-2x mb-3"></i>
+                            <div>Chargement des tables...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script de rafraîchissement temps réel (API REST) -->
+    <script>
+        async function fetchStatus() {
+            try {
+                const res = await fetch('/api/status');
+                if (!res.ok) return;
+                const data = await res.json();
+
+                // Mise à jour des stats globales
+                document.getElementById('stat-total').innerText = data.total_tables || 0;
+                document.getElementById('stat-free').innerText = data.free_count || 0;
+                document.getElementById('stat-occupied').innerText = data.occupied_count || 0;
+
+                const rate = data.total_tables > 0 ? Math.round((data.occupied_count / data.total_tables) * 100) : 0;
+                document.getElementById('stat-rate').innerText = rate + '%';
+
+                document.getElementById('timestamp-display').innerText = new Date().toLocaleTimeString();
+
+                // Rendu des cartes de chaque table
+                const container = document.getElementById('tables-list');
+                if (!data.tables || data.tables.length === 0) {
+                    container.innerHTML = `
+                        <div class="alert alert-info text-center m-3">
+                            <i class="fa-solid fa-info-circle me-1"></i> Calibration en cours ou aucune table détectée.
+                        </div>`;
+                    return;
+                }
+
+                let html = '';
+                data.tables.forEach(t => {
+                    let badgeClass = 'badge-libre';
+                    let statusLabel = 'LIBRE';
+                    let icon = 'fa-check';
+
+                    if (t.status === 'OCCUPEE') {
+                        badgeClass = 'badge-occupee';
+                        statusLabel = 'OCCUPÉE';
+                        icon = 'fa-user-group';
+                    } else if (t.status === 'EN_LIBERATION') {
+                        badgeClass = 'badge-depart';
+                        statusLabel = 'EN DÉPART';
+                        icon = 'fa-person-walking-arrow-right';
+                    }
+
+                    html += `
+                    <div class="card-custom p-3">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="fw-bold fs-5">
+                                <i class="fa-solid fa-chair text-secondary me-2"></i>Table ${t.table_id}
+                            </span>
+                            <span class="status-badge ${badgeClass}">
+                                <i class="fa-solid ${icon} me-1"></i> ${statusLabel}
+                            </span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-end">
+                            <div>
+                                <div class="small text-secondary">Temps d'occupation :</div>
+                                <div class="timer-display ${t.status === 'OCCUPEE' ? 'text-danger' : 'text-secondary'}">
+                                    ${t.timer_display || '00:00:00'}
+                                </div>
+                            </div>
+                            <div class="text-end">
+                                <div class="badge bg-secondary p-2">
+                                    <i class="fa-solid fa-user me-1"></i> ${t.persons_count || 0} client(s)
+                                </div>
+                                ${t.leaving_countdown_sec ? `
+                                    <div class="small text-warning mt-1">Libération dans ${t.leaving_countdown_sec}s</div>
+                                ` : ''}
+                            </div>
+                        </div>
+                    </div>`;
+                });
+                container.innerHTML = html;
+
+            } catch (err) {
+                console.error("Erreur de récupération de l'état :", err);
+            }
+        }
+
+        async function recalibrateTables() {
+            if (!confirm("Voulez-vous réinitialiser et relancer la détection des tables ?")) return;
+            try {
+                const res = await fetch('/api/recalibrate', { method: 'POST' });
+                const json = await res.json();
+                alert("Calibration relancée ! Le système va analyser la salle pendant quelques secondes.");
+            } catch (err) {
+                alert("Erreur lors de la demande de calibration.");
+            }
+        }
+
+        // Rafraîchissement automatique toutes les 1000ms
+        setInterval(fetchStatus, 1000);
+        fetchStatus();
+
+        // Logique de l'Assistant IA Chatbot
+        function toggleChat() {
+            const body = document.getElementById('chat-body');
+            body.style.display = (body.style.display === 'none' || body.style.display === '') ? 'flex' : 'none';
+        }
+
+        async function sendChatMessage() {
+            const input = document.getElementById('chat-input');
+            const msg = input.value.trim();
+            if (!msg) return;
+
+            const messagesDiv = document.getElementById('chat-messages');
+            // Afficher message client
+            messagesDiv.innerHTML += `
+                <div class="d-flex justify-content-end mb-2">
+                    <div class="bg-primary text-white p-2 rounded-3 small" style="max-width: 80%;">
+                        ${msg}
+                    </div>
+                </div>
+            `;
+            input.value = '';
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+            // Afficher indicateur de chargement
+            const loadingId = 'loading-' + Date.now();
+            messagesDiv.innerHTML += `
+                <div id="${loadingId}" class="d-flex justify-content-start mb-2">
+                    <div class="bg-secondary text-white p-2 rounded-3 small">
+                        <i class="fa-solid fa-spinner fa-spin"></i> L'assistant réfléchit...
+                    </div>
+                </div>
+            `;
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+
+            try {
+                const res = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: msg })
+                });
+                const data = await res.json();
+                document.getElementById(loadingId)?.remove();
+
+                const replyHtml = (data.reply || "Désolé, une erreur est survenue.").replace(/\n/g, '<br>');
+                messagesDiv.innerHTML += `
+                    <div class="d-flex justify-content-start mb-2">
+                        <div class="card-custom p-2 rounded-3 small border border-info" style="max-width: 85%; background: #1e293b;">
+                            <div class="fw-bold text-info small mb-1"><i class="fa-solid fa-robot me-1"></i>Coffee House Lac :</div>
+                            ${replyHtml}
+                        </div>
+                    </div>
+                `;
+            } catch (err) {
+                document.getElementById(loadingId)?.remove();
+                messagesDiv.innerHTML += `
+                    <div class="d-flex justify-content-start mb-2">
+                        <div class="bg-danger text-white p-2 rounded-3 small">
+                            Erreur de communication avec l'assistant.
+                        </div>
+                    </div>
+                `;
+            }
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+
+        document.getElementById('chat-input')?.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') sendChatMessage();
+        });
+    </script>
+
+    <!-- WIDGET CHATBOT FLOTTANT -->
+    <div id="chat-widget" style="position: fixed; bottom: 20px; right: 25px; z-index: 1000; width: 350px;">
+        <!-- Bouton d'ouverture / fermeture -->
+        <button onclick="toggleChat()" class="btn btn-info w-100 shadow-lg d-flex justify-content-between align-items-center py-2 px-3 rounded-pill fw-bold">
+            <span><i class="fa-solid fa-robot me-2"></i>Assistant Menu & Client IA</span>
+            <i class="fa-solid fa-chevron-up"></i>
+        </button>
+
+        <!-- Corps du chat -->
+        <div id="chat-body" class="card-custom shadow-lg mt-2 flex-column" style="display: none; height: 420px; border: 2px solid #38bdf8;">
+            <div class="p-2 border-bottom border-secondary d-flex justify-content-between align-items-center bg-dark rounded-top">
+                <span class="small fw-bold text-info"><i class="fa-solid fa-mug-saucer me-1"></i>Coffee House Lac AI</span>
+                <button class="btn btn-sm text-secondary p-0" onclick="toggleChat()"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div id="chat-messages" class="p-3 overflow-y-auto flex-grow-1" style="font-size: 0.9rem;">
+                <div class="d-flex justify-content-start mb-2">
+                    <div class="card-custom p-2 rounded-3 small border border-info" style="background: #1e293b;">
+                        👋 Bonjour ! Je suis l'agent IA du café. Posez-moi vos questions sur le menu, les prix, les allergènes, les formules ou la disponibilité des tables en direct !
+                    </div>
+                </div>
+            </div>
+            <div class="p-2 border-top border-secondary bg-dark rounded-bottom">
+                <div class="input-group">
+                    <input type="text" id="chat-input" class="form-control form-control-sm bg-secondary text-white border-0" placeholder="Ex: Combien coûte l'express ?">
+                    <button class="btn btn-info btn-sm" onclick="sendChatMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

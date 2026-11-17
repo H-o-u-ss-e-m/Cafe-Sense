@@ -1,0 +1,560 @@
+<!-- ========================================== -->
+<!-- ☕ SMART CAFE IOT - MODERN ANGULAR APP     -->
+<!-- ========================================== -->
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top glass-navbar px-3 py-2">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="#">
+      <img src="logo.png" alt="Coffee House Lac Logo" class="brand-logo rounded-circle shadow-sm" style="width: 44px; height: 44px; object-fit: contain; background: #0D0805; padding: 2px; border: 1px solid rgba(242, 163, 65, 0.6);" />
+      <div>
+        <div class="lh-1 fs-5 text-gradient">Coffee House Lac</div>
+        <small class="text-secondary" style="font-size: 0.72rem; letter-spacing: 0.5px;">SMART CAFÉ IoT & AGENT IA</small>
+      </div>
+    </a>
+
+    <!-- Onglets Principaux -->
+    <div class="d-none d-md-flex align-items-center nav-pills-custom p-1 rounded-pill bg-dark-subtle border border-secondary border-opacity-25 mx-auto">
+      <button class="nav-pill-btn" [class.active]="activeTab() === 'dashboard'" (click)="activeTab.set('dashboard')">
+        <i class="fa-solid fa-camera me-1"></i> Tables & Caméra
+      </button>
+      <button class="nav-pill-btn" [class.active]="activeTab() === 'menu'" (click)="activeTab.set('menu')">
+        <i class="fa-solid fa-book-open me-1"></i> Menu & Tarifs
+      </button>
+      <button class="nav-pill-btn" [class.active]="activeTab() === 'formulas'" (click)="activeTab.set('formulas')">
+        <i class="fa-solid fa-tags me-1"></i> Formules & Deals
+      </button>
+      <button class="nav-pill-btn" [class.active]="activeTab() === 'info'" (click)="activeTab.set('info')">
+        <i class="fa-solid fa-circle-info me-1"></i> Infos Café
+      </button>
+    </div>
+
+    <!-- Actions Droite -->
+    <div class="d-flex align-items-center gap-2">
+      <span class="badge d-flex align-items-center gap-1 py-2 px-3 rounded-pill" 
+            [ngClass]="isStreamActive() ? 'bg-danger-subtle text-danger border border-danger border-opacity-50' : 'bg-secondary text-light'">
+        <i class="fa-solid fa-circle fa-beat-fade text-danger" style="font-size: 8px;"></i>
+        <span class="fw-bold" style="font-size: 0.75rem;">LIVE STREAM</span>
+      </span>
+
+      <button class="btn btn-outline-info btn-sm rounded-pill px-3" (click)="recalibrateTables()" title="Recalibrer la détection">
+        <i class="fa-solid fa-arrows-rotate me-1"></i> Recalibrer
+      </button>
+
+      <button class="btn btn-gradient btn-sm rounded-pill px-3 d-flex align-items-center gap-2 shadow-sm" (click)="toggleChat()">
+        <i class="fa-solid fa-robot"></i>
+        <span class="d-none d-sm-inline">Assistant IA</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- NAV MOBILE (PETITS ECRANS) -->
+<div class="d-flex d-md-none justify-content-around bg-dark border-bottom border-secondary border-opacity-25 py-2 px-1">
+  <button class="btn btn-sm" [class.btn-info]="activeTab() === 'dashboard'" [class.text-secondary]="activeTab() !== 'dashboard'" (click)="activeTab.set('dashboard')">
+    <i class="fa-solid fa-camera"></i> Tables
+  </button>
+  <button class="btn btn-sm" [class.btn-info]="activeTab() === 'menu'" [class.text-secondary]="activeTab() !== 'menu'" (click)="activeTab.set('menu')">
+    <i class="fa-solid fa-book-open"></i> Menu
+  </button>
+  <button class="btn btn-sm" [class.btn-info]="activeTab() === 'formulas'" [class.text-secondary]="activeTab() !== 'formulas'" (click)="activeTab.set('formulas')">
+    <i class="fa-solid fa-tags"></i> Formules
+  </button>
+  <button class="btn btn-sm" [class.btn-info]="activeTab() === 'info'" [class.text-secondary]="activeTab() !== 'info'" (click)="activeTab.set('info')">
+    <i class="fa-solid fa-circle-info"></i> Infos
+  </button>
+</div>
+
+<!-- CONTENU PRINCIPAL -->
+<main class="container-fluid px-3 px-lg-4 py-4">
+
+  <!-- ======================================================== -->
+  <!-- TAB 1 : DASHBOARD & CAMÉRA                               -->
+  <!-- ======================================================== -->
+  @if (activeTab() === 'dashboard') {
+    <!-- KPIs -->
+    <div class="row g-3 mb-4">
+      <div class="col-6 col-lg-3">
+        <div class="stat-card">
+          <div class="stat-icon bg-info-subtle text-info"><i class="fa-solid fa-chair"></i></div>
+          <div class="stat-meta">
+            <div class="stat-label">TOTAL TABLES</div>
+            <div class="stat-value text-info">{{ roomStatus().total_tables }}</div>
+            <div class="stat-sub">Disposées en salle & terrasse</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="stat-card">
+          <div class="stat-icon bg-success-subtle text-success"><i class="fa-solid fa-circle-check"></i></div>
+          <div class="stat-meta">
+            <div class="stat-label">TABLES LIBRES</div>
+            <div class="stat-value text-success">{{ roomStatus().free_count }}</div>
+            <div class="stat-sub text-success-emphasis">Prêtes à accueillir</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="stat-card">
+          <div class="stat-icon bg-danger-subtle text-danger"><i class="fa-solid fa-users"></i></div>
+          <div class="stat-meta">
+            <div class="stat-label">TABLES OCCUPÉES</div>
+            <div class="stat-value text-danger">{{ roomStatus().occupied_count }}</div>
+            <div class="stat-sub">Clients installés</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-lg-3">
+        <div class="stat-card">
+          <div class="stat-icon bg-warning-subtle text-warning"><i class="fa-solid fa-person-walking-arrow-right"></i></div>
+          <div class="stat-meta">
+            <div class="stat-label">EN DÉPART</div>
+            <div class="stat-value text-warning">{{ roomStatus().leaving_count }}</div>
+            <div class="stat-sub">Libération imminente</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SÉLECTIONNEUR DE SOURCE VIDÉO (WEBCAM vs VIDÉO CAFE) -->
+    <div class="glass-card p-3 mb-4">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+        <div class="d-flex align-items-center gap-2">
+          <i class="fa-solid fa-sliders text-info fs-5"></i>
+          <div>
+            <div class="fw-bold fs-6">Source Vidéo & Entrée Caméra</div>
+            <small class="text-secondary">Choisissez entre la vraie Webcam PC ou un fichier vidéo pour appliquer l'IA</small>
+          </div>
+        </div>
+
+        <!-- Boutons de sélection de source -->
+        <div class="d-flex flex-wrap gap-2">
+          @for (src of availableSources(); track src.id) {
+            <button class="btn btn-sm rounded-pill px-3 d-flex align-items-center gap-2"
+                    [ngClass]="currentSource() === src.id ? 'btn-info text-dark fw-bold shadow-sm' : 'btn-outline-secondary text-light'"
+                    [disabled]="isSwitchingSource()"
+                    (click)="changeVideoSource(src.id)">
+              <i class="fa-solid" [ngClass]="src.type === 'webcam' ? 'fa-video' : 'fa-film'"></i>
+              <span>{{ src.name }}</span>
+              @if (currentSource() === src.id) {
+                <span class="badge bg-dark text-info ms-1 small">ACTIF</span>
+              }
+            </button>
+          }
+
+          @if (isSwitchingSource()) {
+            <span class="d-flex align-items-center text-info small ms-2">
+              <i class="fa-solid fa-spinner fa-spin me-1"></i> Basculement en cours...
+            </span>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Conteneur Vidéo + Grille des Tables -->
+    <div class="row g-4">
+      <!-- Flux Vidéo en Direct -->
+      <div class="col-12 col-xl-7">
+        <div class="glass-card p-3 h-100">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="d-flex align-items-center gap-2">
+              <i class="fa-solid fa-video text-info"></i>
+              <h5 class="mb-0 fw-bold">Surveillance Vidéo des Tables (IA YOLO)</h5>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+              <button class="btn btn-sm btn-outline-info rounded-pill px-2 py-1" style="font-size: 0.75rem;" (click)="updateStreamUrl()" title="Rafraîchir le flux vidéo">
+                <i class="fa-solid fa-arrows-rotate me-1"></i> Rafraîchir
+              </button>
+              <span class="badge bg-dark border border-secondary px-2 py-1 small text-muted">
+                Résolution 640x480 MJPEG
+              </span>
+            </div>
+          </div>
+
+          <div class="video-wrapper rounded-3 overflow-hidden position-relative border border-secondary border-opacity-25 bg-black" style="min-height: 380px;">
+            @if (videoStreamUrl()) {
+              <img [src]="videoStreamUrl()" alt="Flux Caméra Café" class="w-100 h-auto d-block" />
+            }
+
+            <!-- SPINNER DE RECHARGE & TRANSITION FLUIDE -->
+            @if (isSwitchingSource() || !videoStreamUrl()) {
+              <div class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column align-items-center justify-content-center bg-black bg-opacity-85 text-light z-3 p-4">
+                <div class="spinner-border text-info mb-3" style="width: 3.5rem; height: 3.5rem;" role="status">
+                  <span class="visually-hidden">Chargement...</span>
+                </div>
+                <div class="fw-bold fs-5 text-gradient mb-1">
+                  <i class="fa-solid fa-camera-rotate me-2 text-info"></i> Reconnexion du flux en cours...
+                </div>
+                <div class="text-secondary small mb-2">
+                  Source active : <span class="text-info fw-bold">{{ getSourceLabel(currentSource()) }}</span>
+                </div>
+                <div class="badge bg-dark border border-secondary text-info px-3 py-2">
+                  <i class="fa-solid fa-brain me-1"></i> Chargement YOLO & Calibration des tables...
+                </div>
+              </div>
+            }
+
+            <div class="stream-overlay-badge position-absolute top-0 start-0 m-2 badge bg-black bg-opacity-75 text-success border border-success border-opacity-50">
+              <i class="fa-solid fa-circle text-success me-1"></i> YOLOv8 Détection Active
+            </div>
+            <div class="position-absolute top-0 end-0 m-2 badge bg-dark bg-opacity-75 text-info border border-info border-opacity-50">
+              Source : {{ getSourceLabel(currentSource()) }}
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center mt-3 text-secondary small">
+            <div><i class="fa-solid fa-info-circle me-1"></i> Vert = Libre | Rouge = Occupée | Jaune = En départ</div>
+            <div>Basculement dynamique disponible ci-dessus</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Liste détaillée des Tables & Chronos -->
+      <div class="col-12 col-xl-5">
+        <div class="glass-card p-3 h-100">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="d-flex align-items-center gap-2">
+              <i class="fa-solid fa-clock text-warning"></i>
+              <h5 class="mb-0 fw-bold">Statut & Chronomètres par Table</h5>
+            </div>
+            <span class="badge bg-secondary rounded-pill">{{ roomStatus().tables.length }} tables</span>
+          </div>
+
+          <div class="table-list-scroll">
+            @if (roomStatus().tables.length === 0) {
+              <div class="text-center py-5 text-secondary">
+                <i class="fa-solid fa-spinner fa-spin fa-2x mb-3 text-info"></i>
+                <p>En attente du flux vidéo et de la calibration...</p>
+              </div>
+            }
+
+            <div class="d-flex flex-column gap-3">
+              @for (t of roomStatus().tables; track t.table_id) {
+                <div class="table-item-card p-3 rounded-3" 
+                     [ngClass]="{
+                       'border-success-subtle bg-success-subtle-10': t.status === 'LIBRE',
+                       'border-danger-subtle bg-danger-subtle-10': t.status === 'OCCUPEE',
+                       'border-warning-subtle bg-warning-subtle-10': t.status === 'EN DÉPART'
+                     }">
+                  <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="fw-bold fs-6 d-flex align-items-center gap-2">
+                      <i class="fa-solid fa-chair text-secondary"></i> Table #{{ t.table_id }}
+                    </span>
+                    <span class="badge rounded-pill px-3 py-1 text-uppercase fw-semibold"
+                          [ngClass]="{
+                            'bg-success-subtle text-success border border-success': t.status === 'LIBRE',
+                            'bg-danger-subtle text-danger border border-danger': t.status === 'OCCUPEE',
+                            'bg-warning-subtle text-warning border border-warning': t.status === 'EN DÉPART'
+                          }">
+                      {{ t.status }}
+                    </span>
+                  </div>
+
+                  <div class="d-flex justify-content-between align-items-end">
+                    <div>
+                      <small class="text-secondary d-block">Temps d'occupation :</small>
+                      <span class="timer-font fw-bold" [class.text-danger]="t.status === 'OCCUPEE'" [class.text-secondary]="t.status !== 'OCCUPEE'">
+                        {{ t.timer_display || '00:00:00' }}
+                      </span>
+                    </div>
+
+                    <div class="text-end">
+                      <span class="badge bg-secondary bg-opacity-50 text-light py-1 px-2">
+                        <i class="fa-solid fa-user me-1"></i> {{ t.persons_count }} pers.
+                      </span>
+                      @if (t.leaving_countdown_sec) {
+                        <div class="small text-warning mt-1">
+                          <i class="fa-solid fa-hourglass-half"></i> Libre dans {{ t.leaving_countdown_sec }}s
+                        </div>
+                      }
+                    </div>
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+
+  <!-- ======================================================== -->
+  <!-- TAB 2 : CATALOGUE DU MENU & TARIFS                       -->
+  <!-- ======================================================== -->
+  @if (activeTab() === 'menu') {
+    <div class="glass-card p-4 mb-4">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
+        <div>
+          <h3 class="fw-bold mb-1"><i class="fa-solid fa-utensils text-info me-2"></i>Catalogue du Café & Restaurant</h3>
+          <p class="text-secondary small mb-0">Tous les prix sont en Dinars Tunisiens (DT). Données lues en temps réel depuis le JSON.</p>
+        </div>
+
+        <!-- Recherche rapide -->
+        <div class="search-box position-relative" style="min-width: 280px;">
+          <i class="fa-solid fa-search position-absolute top-50 start-0 translate-middle-y ms-3 text-secondary"></i>
+          <input type="text" class="form-control rounded-pill ps-5 bg-dark border-secondary text-light" 
+                 placeholder="Rechercher (ex: Capucin, Ojja...)" 
+                 [ngModel]="searchQuery()" 
+                 (ngModelChange)="searchQuery.set($event)" />
+        </div>
+      </div>
+
+      <!-- Filtres Catégories -->
+      <div class="d-flex flex-wrap gap-2 mb-3">
+        <button class="filter-pill" [class.active]="selectedCategory() === 'all'" (click)="selectCategory('all')">
+          🌟 Tout voir ({{ allMenuItems().length }})
+        </button>
+        @for (cat of categories(); track cat.id) {
+          <button class="filter-pill" [class.active]="selectedCategory() === cat.id" (click)="selectCategory(cat.id)">
+            {{ cat.name }}
+          </button>
+        }
+      </div>
+
+      <!-- Filtres Régimes & Prix -->
+      <div class="d-flex flex-wrap align-items-center gap-3 p-3 rounded-3 bg-dark-subtle border border-secondary border-opacity-25 mb-4">
+        <div class="form-check form-switch mb-0">
+          <input class="form-check-input" type="checkbox" id="glutenSwitch" [checked]="filterGlutenFree()" (change)="filterGlutenFree.set(!filterGlutenFree())">
+          <label class="form-check-label small" for="glutenSwitch">🌾 Sans Gluten</label>
+        </div>
+        <div class="form-check form-switch mb-0">
+          <input class="form-check-input" type="checkbox" id="vegeSwitch" [checked]="filterVegetarian()" (change)="filterVegetarian.set(!filterVegetarian())">
+          <label class="form-check-label small" for="vegeSwitch">🥗 Végétarien</label>
+        </div>
+        <div class="d-flex align-items-center gap-2 ms-auto">
+          <small class="text-secondary">Prix Max : <strong class="text-info">{{ filterMaxPrice() }} DT</strong></small>
+          <input type="range" class="form-range" style="width: 120px;" min="2" max="30" step="1" 
+                 [ngModel]="filterMaxPrice()" (ngModelChange)="filterMaxPrice.set($event)">
+        </div>
+      </div>
+
+      <!-- Grille des Articles -->
+      <div class="row g-3">
+        @for (item of filteredItems; track item.id) {
+          <div class="col-12 col-md-6 col-lg-4 col-xxl-3">
+            <div class="menu-item-card h-100 p-3 rounded-3 d-flex flex-column justify-content-between">
+              <div>
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <h6 class="fw-bold mb-0 text-white">{{ item.name }}</h6>
+                  <span class="badge bg-info-subtle text-info fw-bold fs-6">{{ item.price | number:'1.1-2' }} DT</span>
+                </div>
+                <p class="text-secondary small mb-2 lh-sm">{{ item.description }}</p>
+
+                <!-- Ingrédients -->
+                @if (item.ingredients.length > 0) {
+                  <div class="small text-muted mb-2">
+                    <i class="fa-solid fa-leaf text-success me-1"></i> {{ item.ingredients.join(', ') }}
+                  </div>
+                }
+              </div>
+
+              <div>
+                <!-- Allergènes -->
+                @if (item.allergens.length > 0) {
+                  <div class="badge bg-warning-subtle text-warning border border-warning border-opacity-25 small mb-2 w-100 text-start">
+                    <i class="fa-solid fa-triangle-exclamation me-1"></i> Allergènes : {{ item.allergens.join(', ') }}
+                  </div>
+                } @else {
+                  <div class="badge bg-success-subtle text-success border border-success border-opacity-25 small mb-2 w-100 text-start">
+                    <i class="fa-solid fa-check me-1"></i> Aucun allergène majeur
+                  </div>
+                }
+
+                <!-- Tags & Calories -->
+                <div class="d-flex justify-content-between align-items-center text-secondary small pt-2 border-top border-secondary border-opacity-25">
+                  <span>{{ item.calories }} kcal</span>
+                  <span class="text-info" style="cursor: pointer;" (click)="sendQuickQuestion('Combien coûte ' + item.name + ' ?')">
+                    <i class="fa-solid fa-robot me-1"></i> Demander à l'IA
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  }
+
+  <!-- ======================================================== -->
+  <!-- TAB 3 : FORMULES ET DEALS                                -->
+  <!-- ======================================================== -->
+  @if (activeTab() === 'formulas') {
+    <div class="glass-card p-4">
+      <div class="mb-4">
+        <h3 class="fw-bold mb-1"><i class="fa-solid fa-tags text-warning me-2"></i>Formules Économiques & Combos</h3>
+        <p class="text-secondary small mb-0">Des menus complets à tarifs réduits pour étudiants, couples et groupes.</p>
+      </div>
+
+      <div class="row g-4">
+        @for (f of formulas(); track f.id) {
+          <div class="col-12 col-md-6 col-lg-4">
+            <div class="formula-card p-4 rounded-3 h-100 d-flex flex-column justify-content-between">
+              <div>
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                  <h5 class="fw-bold text-white mb-0">{{ f.name }}</h5>
+                  <span class="badge bg-warning-subtle text-warning fs-5 fw-bold px-3 py-2">{{ f.price | number:'1.1-2' }} DT</span>
+                </div>
+                <p class="text-secondary small mb-3">{{ f.description }}</p>
+
+                <div class="mb-3">
+                  <h6 class="small fw-bold text-light mb-2"><i class="fa-solid fa-circle-check text-success me-1"></i> Inclus dans la formule :</h6>
+                  <ul class="list-unstyled small text-secondary mb-0">
+                    @for (inc of f.includes; track inc) {
+                      <li class="mb-1"><i class="fa-solid fa-arrow-right text-info me-2 small"></i>{{ inc }}</li>
+                    }
+                  </ul>
+                </div>
+              </div>
+
+              <div class="pt-3 border-top border-secondary border-opacity-25">
+                <div class="small text-muted mb-2"><i class="fa-solid fa-info-circle me-1"></i>{{ f.conditions }}</div>
+                <button class="btn btn-outline-info btn-sm w-100 rounded-pill" (click)="sendQuickQuestion('Explique-moi la ' + f.name)">
+                  <i class="fa-solid fa-robot me-1"></i> Poser une question à l'IA
+                </button>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  }
+
+  <!-- ======================================================== -->
+  <!-- TAB 4 : INFORMATIONS CAFÉ                                -->
+  <!-- ======================================================== -->
+  @if (activeTab() === 'info') {
+    @if (cafeInfo(); as c) {
+      <div class="glass-card p-4 mb-4 text-center">
+        <img src="logo.png" alt="Coffee House Lac" class="rounded-circle shadow-lg mb-3" style="width: 90px; height: 90px; object-fit: contain; background: #0D0805; padding: 6px; border: 2px solid rgba(242, 163, 65, 0.7);" />
+        <h3 class="fw-bold text-gradient mb-1">{{ c.name }}</h3>
+        <p class="text-secondary mb-0">{{ c.tagline }}</p>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-12 col-md-6">
+          <div class="glass-card p-4 h-100">
+            <h5 class="fw-bold text-info mb-3"><i class="fa-solid fa-location-dot me-2"></i>Contact & Localisation</h5>
+            <p><strong>Adresse :</strong> {{ c.address }}</p>
+            <p><strong>Téléphone :</strong> {{ c.phone }}</p>
+            <p><strong>WhatsApp :</strong> {{ c.whatsapp }}</p>
+            <hr class="border-secondary opacity-25">
+            <h6 class="fw-bold text-light mb-2"><i class="fa-solid fa-wifi text-warning me-2"></i>Wi-Fi Gratuit</h6>
+            <p class="text-secondary small">{{ c.wifi.note }}</p>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-6">
+          <div class="glass-card p-4 h-100">
+            <h5 class="fw-bold text-warning mb-3"><i class="fa-solid fa-clock me-2"></i>Horaires d'Ouverture</h5>
+            <div class="table-responsive">
+              <table class="table table-dark table-sm small mb-3">
+                <tbody>
+                  @for (h of c.hours_groups; track h.days_fr) {
+                    <tr>
+                      <td class="text-capitalize">{{ h.days_fr }}</td>
+                      <td class="text-end fw-bold text-info">{{ h.open }} à {{ h.close }}</td>
+                    </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+            <hr class="border-secondary opacity-25">
+            <h6 class="fw-bold text-light mb-2"><i class="fa-solid fa-truck text-success me-2"></i>Livraison à Domicile</h6>
+            <p class="text-secondary small mb-0">Disponible de {{ c.delivery.hours }} dans les zones : {{ c.delivery.zones.join(', ') }} (Frais : {{ c.delivery.fee }} DT, min. {{ c.delivery.min_order }} DT).</p>
+          </div>
+        </div>
+      </div>
+    }
+  }
+</main>
+
+<!-- ======================================================== -->
+<!-- WIDGET CHATBOT FLOTTANT (ASSISTANT IA ENTRAÎNÉ)         -->
+<!-- ======================================================== -->
+<div class="chat-widget-wrapper">
+  <!-- Bouton déclencheur flottant -->
+  @if (!isChatOpen()) {
+    <button class="chat-launcher-btn shadow-lg d-flex align-items-center" (click)="toggleChat()">
+      <div class="position-relative d-flex align-items-center justify-content-center">
+        <img src="logo.png" alt="Logo" style="width: 32px; height: 32px; object-fit: contain;" />
+        <span class="position-absolute top-0 start-100 translate-middle p-1 bg-success border border-light rounded-circle"></span>
+      </div>
+      <span class="d-none d-sm-inline fw-bold ms-2">Assistant IA</span>
+    </button>
+  }
+
+  <!-- Fenêtre de Chat Flottante -->
+  @if (isChatOpen()) {
+    <div class="chat-window glass-card shadow-2xl">
+      <!-- En-tête du Chat -->
+      <div class="chat-header p-3 border-bottom border-secondary border-opacity-25 d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center gap-2">
+          <div class="avatar-robot d-flex align-items-center justify-content-center bg-black bg-opacity-25 p-1 rounded-circle border border-info border-opacity-25" style="width: 36px; height: 36px;">
+            <img src="logo.png" alt="Coffee House Lac Logo" style="width: 28px; height: 28px; object-fit: contain;" />
+          </div>
+          <div>
+            <h6 class="mb-0 fw-bold text-white">Coffee House Lac AI</h6>
+            <small class="text-success" style="font-size: 0.7rem;"><i class="fa-solid fa-circle me-1" style="font-size: 6px;"></i> Modèle Qwen2.5-1.5B (Local)</small>
+          </div>
+        </div>
+        <button class="btn btn-sm btn-link text-secondary p-0" (click)="toggleChat()">
+          <i class="fa-solid fa-xmark fa-lg"></i>
+        </button>
+      </div>
+
+      <!-- Corps des Messages -->
+      <div id="chat-scroll-container" class="chat-messages-body p-3 overflow-y-auto">
+        @for (msg of chatMessages(); track $index) {
+          <div class="d-flex mb-3" [ngClass]="msg.sender === 'user' ? 'justify-content-end' : 'justify-content-start'">
+            <div class="message-bubble" [ngClass]="msg.sender === 'user' ? 'user-bubble' : 'agent-bubble'">
+              <div class="d-flex justify-content-between align-items-center mb-1">
+                <span class="fw-bold small" [class.text-info]="msg.sender === 'agent'" [class.text-white]="msg.sender === 'user'">
+                  {{ msg.sender === 'user' ? 'Vous' : 'Coffee House Lac' }}
+                </span>
+                <small class="text-muted ms-2" style="font-size: 0.65rem;">{{ msg.time }}</small>
+              </div>
+              <div class="bubble-content" style="white-space: pre-wrap;">{{ msg.text }}</div>
+            </div>
+          </div>
+        }
+
+        <!-- Indicateur de Réflexion -->
+        @if (isChatLoading()) {
+          <div class="d-flex justify-content-start mb-3">
+            <div class="message-bubble agent-bubble">
+              <span class="text-secondary small">
+                <i class="fa-solid fa-spinner fa-spin me-1 text-info"></i> L'agent IA réfléchit...
+              </span>
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- Suggestions rapides -->
+      <div class="chat-suggestions px-3 py-2 border-top border-secondary border-opacity-10 d-flex gap-1 overflow-x-auto">
+        @for (s of quickSuggestions; track s) {
+          <button class="suggestion-chip" (click)="sendQuickQuestion(s)">
+            {{ s }}
+          </button>
+        }
+      </div>
+
+      <!-- Barre de Saisie -->
+      <div class="chat-footer p-3 border-top border-secondary border-opacity-25">
+        <form (ngSubmit)="sendMessage()" class="d-flex gap-2">
+          <input type="text" class="form-control form-control-sm bg-dark border-secondary text-light rounded-pill px-3" 
+                 placeholder="Posez votre question (ex: Combien coûte le capucin ?)" 
+                 [ngModel]="chatInput()" 
+                 (ngModelChange)="chatInput.set($event)" 
+                 name="chatInput" 
+                 [disabled]="isChatLoading()" />
+          <button type="submit" class="btn btn-info btn-sm rounded-circle d-flex align-items-center justify-content-center" 
+                  style="width: 34px; height: 34px;" 
+                  [disabled]="isChatLoading() || !chatInput().trim()">
+            <i class="fa-solid fa-paper-plane"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  }
+</div>

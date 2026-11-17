@@ -1,0 +1,20 @@
+# Dépendances & builds
+node_modules/
+dist/
+.angular/
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Vidéos de test (trop volumineuses pour GitHub, > 100 Mo) : à placer manuellement dans test/
+test/*.mp4
+
+# Divers
+.vscode/
+.idea/
+*.log
+.DS_Store
+
+# Archive redondante de l'adaptateur
+*.zip

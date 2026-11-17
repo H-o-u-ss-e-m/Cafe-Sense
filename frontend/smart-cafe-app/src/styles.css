@@ -1,0 +1,48 @@
+/* Thème CaféSense : surcharge des variables Bootstrap par la palette du logo */
+:root, [data-bs-theme=dark] {
+  --bs-body-bg: #0D0805;
+  --bs-body-color: #EAD7C3;
+  --bs-secondary-color: rgba(234, 215, 195, 0.65);
+  --bs-secondary-rgb: 201, 180, 156;
+  --bs-border-color: rgba(242, 163, 65, 0.25);
+
+  --bs-info: #F2A341;
+  --bs-info-rgb: 242, 163, 65;
+  --bs-info-text-emphasis: #F2A341;
+  --bs-info-bg-subtle: rgba(242, 163, 65, 0.14);
+  --bs-info-border-subtle: rgba(242, 163, 65, 0.4);
+
+  --bs-warning: #E25970;
+  --bs-warning-rgb: 226, 89, 112;
+  --bs-warning-text-emphasis: #F08A9B;
+  --bs-warning-bg-subtle: rgba(226, 89, 112, 0.14);
+  --bs-warning-border-subtle: rgba(226, 89, 112, 0.4);
+
+  --bs-link-color: #F2A341;
+  --bs-link-hover-color: #EAD7C3;
+}
+
+body { background: #0D0805 !important; font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif; }
+
+.btn-info {
+  --bs-btn-bg: #F2A341; --bs-btn-border-color: #F2A341; --bs-btn-color: #0D0805;
+  --bs-btn-hover-bg: #EAD7C3; --bs-btn-hover-border-color: #EAD7C3; --bs-btn-hover-color: #0D0805;
+  --bs-btn-active-bg: #B35E1B; --bs-btn-active-border-color: #B35E1B; --bs-btn-active-color: #fff;
+}
+.btn-outline-info {
+  --bs-btn-color: #F2A341; --bs-btn-border-color: #F2A341;
+  --bs-btn-hover-bg: #F2A341; --bs-btn-hover-border-color: #F2A341; --bs-btn-hover-color: #0D0805;
+  --bs-btn-active-bg: #B35E1B; --bs-btn-active-border-color: #B35E1B;
+}
+.btn-outline-secondary {
+  --bs-btn-color: #EAD7C3; --bs-btn-border-color: rgba(234, 215, 195, 0.35);
+  --bs-btn-hover-bg: #382516; --bs-btn-hover-border-color: #F2A341; --bs-btn-hover-color: #F2A341;
+}
+.text-info { color: #F2A341 !important; }
+.text-warning { color: #E25970 !important; }
+.bg-info-subtle { background-color: rgba(242, 163, 65, 0.14) !important; }
+.bg-warning-subtle { background-color: rgba(226, 89, 112, 0.14) !important; }
+.border-info { border-color: #F2A341 !important; }
+.border-warning { border-color: #E25970 !important; }
+.spinner-border.text-info { color: #F2A341 !important; }
+.bg-dark { background-color: #1a0f08 !important; }
