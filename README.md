@@ -2,7 +2,7 @@
   <img src="docs/logo_cafesense.png" alt="CaféSense - Smart Café Management" width="320"/>
 </p>
 
-<h1 align="center">CaféSense — Smart Café IoT & Agent Conversationnel IA</h1>
+<h1 align="center">CaféSense — Smart Café & Agent Conversationnel IA</h1>
 
 <p align="center">
   <strong>Système Autonome de Restauration Intelligente & IoT Analytics</strong><br>
@@ -389,8 +389,3 @@ Le code source, les modèles entraînés (adaptateur LoRA, poids YOLO affinés),
 Les composants tiers conservent leurs propres licences : Ultralytics YOLOv8 (AGPL-3.0), Qwen2.5 (Apache-2.0), Flask (BSD-3-Clause), Angular (MIT), Bootstrap (MIT), OpenCV (Apache-2.0).
 
 ---
-
-<p align="center">
-  <em>Développé avec passion pour l'excellence académique et l'innovation technologique en génie logiciel et intelligence artificielle appliquée.</em>
-</p>
-
