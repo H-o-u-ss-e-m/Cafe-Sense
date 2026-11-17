@@ -73,12 +73,12 @@ Le projet **Smart Café** est une solution complète combinant l'**Internet des 
   * Un réseau convolutif ultra-rapide (**YOLOv8n**) adapté à la géométrie spécifique des cafés.
   * Un grand modèle de langage compact (**Qwen2.5-1.5B**) adapté par **LoRA (Low-Rank Adaptation)** pour capturer le vocabulaire de restauration et le dialecte tunisien.
 * 📐 **Résolution Spatiale Hybride & Anti-Faux Positifs** :
-  * Algorithme géométrique strict bord-à-bord ($\le 30\text{ px}$) éliminant les faux appariements entre tables et clients distants (clients au bar, musiciens de fond).
+  * Algorithme géométrique strict bord-à-bord (≤ 30 px) éliminant les faux appariements entre tables et clients distants (clients au bar, musiciens de fond).
   * Filtrage anti-passants (temporisation de 3 secondes) et exclusion automatique des étiquettes OSD (*"CAM 1"*).
 * 🔄 **Architecture Hybride Déterministe (RAG + Tool Calling)** :
   * Éradication totale des hallucinations de prix ou d'allergènes grâce à un moteur local pondéré couplé au LLM.
 * 🎥 **Bascule Multi-Sources Fluide & DirectShow** :
-  * Sélection dynamique en direct entre 4 sources (Webcam PC `0` et 3 caméras de surveillance `CAM1.mp4`, `CAM2.mp4`, `CAM3.mp4`) avec initialisation ultra-rapide ($<150\text{ ms}$) sous Windows.
+  * Sélection dynamique en direct entre 4 sources (Webcam PC `0` et 3 caméras de surveillance `CAM1.mp4`, `CAM2.mp4`, `CAM3.mp4`) avec initialisation ultra-rapide (< 150 ms) sous Windows.
 * ⚡ **Frontend Angular 21 à Haute Réactivité** :
   * Utilisation exclusive des **Signals Angular** pour une mise à jour d'interface chirurgicale et fluide sans surcoût de détection de cycle.
 
@@ -115,7 +115,7 @@ Le projet **Smart Café** est une solution complète combinant l'**Internet des 
 
 #### A. Choix du Modèle de Base
 Le modèle retenu est **YOLOv8n (Nano)** de chez Ultralytics :
-* **Nombre de paramètres** : $3\,132\,950$ (~3.2M), pour un poids plume de seulement **6.2 Mo**.
+* **Nombre de paramètres** : 3 132 950 (~3.2M), pour un poids plume de seulement **6.2 Mo**.
 * **Structure** : Backbone CSPDarknet53 avec blocs C2f, couplé à un Neck PANet et une tête *anchor-free*.
 * **Raison du choix** : Vitesse d'inférence exceptionnelle sur CPU classique (compatible embarqué / Raspberry Pi), garantissant un traitement en temps réel sans latence.
 
@@ -127,7 +127,7 @@ Le modèle retenu est **YOLOv8n (Nano)** de chez Ultralytics :
 * **Hyperparamètres d'entraînement** :
   * Optimiseur : **AdamW** automatique (`lr = 0.001667`).
   * Précision mixte : **AMP (Automatic Mixed Precision - FP16)** activée.
-  * Résolution : $640 \times 640$ pixels, batch de 16, arrêt anticipé (*early stopping*) avec `patience=12`.
+  * Résolution : 640 × 640 pixels, batch de 16, arrêt anticipé (*early stopping*) avec `patience=12`.
   * Augmentations : Mosaïque (1.0), variations HSV, retournement horizontal (`fliplr=0.5`), et désactivation stricte du retournement vertical (`flipud=0.0`).
 * **Performances atteintes** :
   * Époques : 44 époques (meilleur checkpoint à l'époque 32).
@@ -137,20 +137,37 @@ Le modèle retenu est **YOLOv8n (Nano)** de chez Ultralytics :
 #### C. Algorithme de Décision Spatiale & Filtrage (`CafeMonitorV2`)
 Détecter des boîtes englobantes ne suffit pas à déterminer si une table est occupée. Le composant `CafeMonitorV2` intègre des filtres mathématiques avancés :
 
-1. **Distance Bord-à-Bord Stricte ($d_{\text{edge}}$)** :  
-   Pour éviter d'associer des clients assis au bar ou en arrière-plan à des tables libres centrales, la distance minimale entre la table et la personne est calculée comme suit :
-   $$dx = \max(0,\; x_1 - px_2,\; px_1 - x_2), \qquad dy = \max(0,\; y_1 - py_2,\; py_1 - y_2)$$
-   $$d_{\text{edge}} = \sqrt{dx^2 + dy^2}$$
-   L'association n'est autorisée que si :
-   $$d_{\text{edge}} \le d_{\text{allowed}} = \min\big(30.0,\; \max(12.0,\; \text{largeur\_table} \times 0.18)\big)$$
-   *(Une personne située au comptoir à 113.7 px ou un musicien à 236 px est immédiatement rejeté, la table restant LIBRE).*
+##### 1. Distance bord-à-bord stricte
 
-2. **Zone d'Assise Rapprochée** :  
-   Les marges d'extension de la table vers les chaises sont limitées à $+15\%$ (max 25 px) :
-   $$\text{Zone}_{\text{chaise}} = \left[ x_1 - 0.15 w,\; y_1 - 0.15 h,\; x_2 + 0.15 w,\; y_2 + 0.25 h \right]$$
+Pour éviter d'associer des clients assis au bar ou en arrière-plan à des tables libres centrales, la distance minimale entre la table (x1, y1, x2, y2) et la personne (px1, py1, px2, py2) est calculée ainsi :
 
-3. **Filtrage Anti-Watermark OSD** :  
-   Rejet systématique des boîtes détectées sur l'incrustation vidéo du coin inférieur droit ($x_2 \ge W - 20$ et $y_2 \ge H - 20$) pour éviter que le logo *"CAM 1"* ne soit pris pour une table.
+```math
+dx = \max(0,\ x_1 - px_2,\ px_1 - x_2) \qquad dy = \max(0,\ y_1 - py_2,\ py_1 - y_2)
+```
+
+```math
+d_{edge} = \sqrt{dx^2 + dy^2}
+```
+
+L'association n'est autorisée que si :
+
+```math
+d_{edge} \le d_{allowed} = \min\left(30,\ \max(12,\ 0.18 \cdot w_{table})\right)
+```
+
+*(Une personne située au comptoir à 113.7 px ou un musicien à 236 px est immédiatement rejeté, la table restant LIBRE.)*
+
+##### 2. Zone d'assise rapprochée
+
+Les marges d'extension de la table vers les chaises sont limitées à +15 % (max 25 px) :
+
+```math
+Zone_{chaise} = \left[\, x_1 - 0.15\,w,\ \ y_1 - 0.15\,h,\ \ x_2 + 0.15\,w,\ \ y_2 + 0.25\,h \,\right]
+```
+
+##### 3. Filtrage anti-watermark OSD
+
+Rejet systématique des boîtes détectées sur l'incrustation vidéo du coin inférieur droit (x2 ≥ W − 20 et y2 ≥ H − 20), pour éviter que le logo *"CAM 1"* ne soit pris pour une table.
 
 4. **Machine à États Temporelle** :
    ```
@@ -183,11 +200,11 @@ Le modèle PyTorch `best.pt` a été converti en graphe statique optimisé **ONN
 
 #### B. Spécialisation par Fine-Tuning LoRA (PEFT)
 Pour adapter l'agent au ton et au contexte du café sans modifier les 1.5 milliard de poids de base, nous avons employé la technique **LoRA (Low-Rank Adaptation)** :
-* **Décomposition de rang** : $W = W_0 + \frac{\alpha}{r}(B \cdot A)$ avec $r = 16$ et $\alpha = 32$.
+* **Décomposition de rang** : `W = W0 + (α/r)·(B·A)` avec r = 16 et α = 32.
 * **Couches ciblées** : 7 modules de projection (`q_proj`, `k_proj`, `v_proj`, `o_proj`, `gate_proj`, `up_proj`, `down_proj`).
 * **Poids entraînés** : **18 464 768 paramètres** seulement (**1.18%** de l'ensemble du réseau).
 * **Empreinte de l'adaptateur** : Seulement **73.9 Mo** (contre 3.09 Go pour le modèle de base).
-* **Entraînement** : Google Colab GPU T4, en précision FP16, batch effectif de 8 (batch 2 $\times$ accumulation 4), learning rate $2 \times 10^{-4}$ avec AdamW.
+* **Entraînement** : Google Colab GPU T4, en précision FP16, batch effectif de 8 (batch 2 × accumulation 4), learning rate 2e-4 avec AdamW.
 
 #### C. Moteur Hybride & RAG Déterministe (`menu_engine.py`)
 > 💡 **Pourquoi une architecture hybride est indispensable :**  
@@ -356,10 +373,10 @@ Ce script d'orchestration démarre simultanément :
 | Métrique / Caractéristique | Module Vision (YOLOv8n) | Module Conversationnel (Qwen2.5 + LoRA) |
 | :--- | :--- | :--- |
 | **Données Entrantes** | Flux vidéo (Images 640×480) | Texte naturel (Français / Tunisien) |
-| **Paramètres Entraînés** | $3.13\text{ M}$ (Transfer Learning COCO) | $18.46\text{ M}$ (LoRA PEFT - 1.18% du LLM) |
-| **Temps d'Inférence** | $\approx 15\text{ ms}$ (GPU) / $\approx 45\text{ ms}$ (CPU) | $< 10\text{ ms}$ (Moteur RAG) / $\approx 1.2\text{ s}$ (Génération LLM) |
-| **Taille du Fichier Modèle**| $6.2\text{ Mo}$ (`best.pt`) / $12.1\text{ Mo}$ (`onnx`) | $73.9\text{ Mo}$ (`adapter_model.safetensors`) |
-| **Précision / Exactitude** | **$98.9\%$ mAP50** sur les tables du café | **$100\%$ factuel** (garanti par le moteur RAG) |
+| **Paramètres Entraînés** | 3,13 M (Transfer Learning COCO) | 18,46 M (LoRA PEFT - 1.18% du LLM) |
+| **Temps d'Inférence** | ≈ 15 ms (GPU) / ≈ 45 ms (CPU) | < 10 ms (Moteur RAG) / ≈ 1,2 s (Génération LLM) |
+| **Taille du Fichier Modèle**| 6,2 Mo (`best.pt`) / 12,1 Mo (`onnx`) | 73,9 Mo (`adapter_model.safetensors`) |
+| **Précision / Exactitude** | **98,9 % mAP50** sur les tables du café | **100 % factuel** (garanti par le moteur RAG) |
 | **Composant Matériel Clé** | CPU classique ou GPU léger (RTX / T4) | 4 à 8 Go de RAM système |
 
 ---
